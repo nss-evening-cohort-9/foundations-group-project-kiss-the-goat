@@ -7,4 +7,17 @@ body {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    justify-content: space-between;
+    height: 460px;
+}
+
+#mapContainer {
+    width: 625px;
+    border: 2px blue solid;
+    display: block;
+}
+
+#contactInfoContainer {
+    border: 2px green solid;
+    display: block;
 }

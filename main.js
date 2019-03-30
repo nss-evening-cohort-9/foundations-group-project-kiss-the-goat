@@ -4,6 +4,9 @@ const printToDom = (divId, textToPrint) => {
   };
 
 const printNavBar = () => {
+    if (document.body.id != 'taproom') {
+        return
+    } else {
     let domString = ``;
     domString +=
     `<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -21,13 +24,37 @@ const printNavBar = () => {
         </div>
     </nav>`
     printToDom('navBar', domString);
+  }
 };
 
 const printMap = () => {
+    if (document.body.id != 'taproom') {
+        return
+    } else {
     let domString = ``;
     domString += `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3222.393140738528!2d-86.75879268470213!3d36.13263981268999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88646609ffab37eb%3A0x528b2eab4ef5110e!2s500+Interstate+Blvd+S%2C+Nashville%2C+TN+37210!5e0!3m2!1sen!2sus!4v1553963381330!5m2!1sen!2sus" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>`;
     printToDom('mapContainer', domString);
+    }
 };
+
+const printContactInfo = () => {
+    if (document.body.id != 'taproom') {
+        return
+    } else {
+    let domString = ``;
+    domString += `<h3>Stop by for a visit!</h3>`;
+    domString += `<h5>Kiss the Goat Brewery</h5>`;
+    domString += `<p>500 Interstate Blvd South</p>`;
+    domString += `<p>Nashville, Tenneseee 37210</p>`;
+    domString += `<p>(615)736-0000</p>`;
+    domString += `<p>Email us to request a tour!</p>`;
+    printToDom('contactInfoContainer', domString);
+    }
+};
+
+// //WHEN the 'Taproom' page loads
+// //THEN the address, hours, phone number, and a link to schedule a brewery tour will be displayed to the right of the dynamic map
+// //THEN when I click the 'Schedule a tour' link, a prompt appears that says 'Your request for a tour has been sent!'
 
 const shoppingCartArray = [
     {
@@ -64,6 +91,9 @@ const shoppingCartArray = [
 ];
 
 const printCart = () =>{
+    if (document.body.id != 'checkoutPage') {
+        return
+    } else {
     let domString = '';
     shoppingCartArray.forEach((beer)=> {
         //if(beer.quantity >= 1){
@@ -82,6 +112,7 @@ const printCart = () =>{
         //};
     });
     printToDom('checkout-card-container', domString);
+    }
 };
 
 const init = () =>{
