@@ -26,11 +26,6 @@ body {
 
 }
 
-
-/* .navbar-toggler-icon {
-    color: white;
-} */
-
 .navbar-brand {
     border: 1px solid white;
     border-radius: 6px;
@@ -55,4 +50,10 @@ body {
 }
 
 
+#mapAndContactContainer {
+    border: 2px red solid;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
 
