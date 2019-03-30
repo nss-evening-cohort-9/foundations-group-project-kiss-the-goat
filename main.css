@@ -1,3 +1,10 @@
 body {
     background-color: lightgrey;    
 }
+
+#mapAndContactContainer {
+    border: 2px red solid;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
