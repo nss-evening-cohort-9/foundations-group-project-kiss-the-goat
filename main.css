@@ -1,5 +1,18 @@
+* {
+    margin: 0, 10px, 0, 10px;
+}
+
 body {
-    background-color: lightgrey;    
+    background-color: white;
+    font-family: 'Pathway Gothic One', sans-serif;
+    letter-spacing: .8px;
+}
+ 
+/* NAVBAR STYLING */
+
+#topNav {
+    background-color: #f44336;
+
 }
 
 /* ~~~~~~~~~~~~~    PRODUCT PAGE     ~~~~~~~~~~~~~~*/
@@ -11,6 +24,39 @@ body {
 }
 /* ~~~~~~~~~~~~~    PRODUCT PAGE     ~~~~~~~~~~~~~~*/
 
+.navbar-brand, .nav-item {
+    color: rgb(235, 235, 235);
+    font-size: 1.5em; 
+    padding: 4px;
+}
+
+.navbar-toggler, .navbar-toggler-icon {
+    border-color: white;
+
+}
+
+.navbar-brand {
+    border: 1px solid white;
+    border-radius: 6px;
+    text-align: center;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+}
+
+.navbar-brand:hover, .nav-item:hover {
+    color: white;
+    transform: scale(1.1);
+    transition: 1.4s;   
+}
+
+.beerSpan {
+    text-transform: uppercase;
+    color: white;
+}
+
+.navbar-nav {
+    float: right;
+}
 
 #mapAndContactContainer {
     border: 2px red solid;
