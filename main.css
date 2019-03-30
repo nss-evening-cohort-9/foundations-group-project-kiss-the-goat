@@ -1,3 +1,42 @@
-body {
-    background-color: lightgrey;    
+* {
+    margin: 0, 10px, 0, 10px;
 }
+
+body {
+    background-color: white;
+    font-family: 'Pathway Gothic One', sans-serif;
+    letter-spacing: .8px;
+}
+ 
+/* NAVBAR STYLING */
+/* 
+#topNav {
+    background-color: #f44336;
+}
+
+.navbar-brand, .nav-item {
+    color: rgb(235, 235, 235);
+    font-size: 1.5em; 
+}
+
+.navbar-brand {
+    border: 1px solid white;
+    border-radius: 6px;
+    text-align: center;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+}
+
+.navbar-brand:hover, .nav-item:hover {
+    color: white;
+    transform: scale(1.1);
+    transition: 1.4s;   
+}
+
+.beerSpan {
+    text-transform: uppercase;
+    color: white;
+}
+
+ */
+
