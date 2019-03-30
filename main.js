@@ -174,9 +174,13 @@ const shoppingCartArray = [
 ];
 
 const printCart = () =>{
+    const checkoutPage = document.getElementById('checkout-card-container');
+    if(checkoutPage ===null){
+        return;
+    } else {
     let domString = '';
     shoppingCartArray.forEach((beer)=> {
-        //if(beer.quantity >= 1){
+        // if(beer.quantity >= 1){
             domString += `<div class="col-sm-6">`;
             domString += `  <div class="card">`;
             domString += `     <div class="card-body">`;
@@ -189,9 +193,10 @@ const printCart = () =>{
             domString += `  </div>`;
             domString += `</div>`;
           
-        //};
+        // };
     });
-    printToDom('productCon', domString);
+    printToDom('checkout-card-container', domString);
+};
 };
 
 const init = () =>{
