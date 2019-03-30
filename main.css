@@ -1,6 +1,7 @@
 body {
     background-color: lightgrey;    
 }
+
 /* ~~~~~~~~~~~~~    PRODUCT PAGE     ~~~~~~~~~~~~~~*/
 .productCon{
     display: flex;
@@ -9,3 +10,12 @@ body {
     margin: 0 auto;
 }
 /* ~~~~~~~~~~~~~    PRODUCT PAGE     ~~~~~~~~~~~~~~*/
+
+
+#mapAndContactContainer {
+    border: 2px red solid;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
