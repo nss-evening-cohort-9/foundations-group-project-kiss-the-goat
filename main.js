@@ -65,6 +65,7 @@ const shoppingCartArray = [
 
 const printCart = () =>{
     let domString = '';
+    if(document.body.id === 'checkoutPage'){
     shoppingCartArray.forEach((beer)=> {
         //if(beer.quantity >= 1){
             domString += `<div class="col-sm-6">`;
@@ -82,12 +83,14 @@ const printCart = () =>{
         //};
     });
     printToDom('checkout-card-container', domString);
+} else 
+{ return };
 };
 
 const init = () =>{
-    printCart();
-    printNavBar();
-    printMap();
+        printCart();
+        printMap();
+        printNavBar();
 };
 
 init();
