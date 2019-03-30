@@ -58,10 +58,24 @@ body {
     float: right;
 }
 
+/* Carousel */
+.carousel {
+    max-width: 600px;
+    margin: 10px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+}
+
+
+/* Maps */
+
 #mapAndContactContainer {
     border: 2px red solid;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
 }
+
+
+
 

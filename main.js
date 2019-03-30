@@ -194,10 +194,26 @@ const printCart = () =>{
     printToDom('productCon', domString);
 };
 
+
+
+
+
+
+const imageLoop = () => {
+    
+};
+
+const imageBuilder = () => {
+    let domString = '';
+
+
+
+
 const init = () =>{
     printCart();
     printNavBar();
     printMap();
     beerCardBuilder(beerArray);
+    setInterval(imageBuilder, 1000);
 };
 init();
