@@ -71,6 +71,7 @@ const printToDom = (divId, textToPrint) => {
     selectedDiv.innerHTML = textToPrint;
   };
 
+
 //~~~~~~~~~~     PRODUCT PAGE: CARD PRINTER     ~~~~~~~~~~//
 const beerCardBuilder = (arrayToPrint) => {
     const productPage = document.getElementById('productCon');
@@ -111,10 +112,6 @@ const beerCardBuilder = (arrayToPrint) => {
 }};
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
-const printToDom = (divId, textToPrint) => {
-    const selectedDiv = document.getElementById(divId);
-    selectedDiv.innerHTML = textToPrint;
-  };
 
 const printNavBar = () => {
     let domString = ``;
@@ -194,7 +191,7 @@ const printCart = () =>{
           
         //};
     });
-    printToDom('checkout-card-container', domString);
+    printToDom('productCon', domString);
 };
 
 const init = () =>{
@@ -202,7 +199,5 @@ const init = () =>{
     printNavBar();
     printMap();
     beerCardBuilder(beerArray);
-
 };
-
 init();
