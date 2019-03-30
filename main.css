@@ -3,7 +3,6 @@ body {
 }
 
 #mapAndContactContainer {
-    border: 2px red solid;
     display: flex;
     padding: 10px;
     margin: 10px;
@@ -11,14 +10,12 @@ body {
 
 #mapContainer {
     flex: 0 0 450px;
-    border: 1px solid pink;
+    margin: 15px 0px 10px 15px;
 }
 
 #contactInfoContainer {
     flex: 1;
-    /* display: flex; */
-    align-content: center;
+    display: flex;
     align-items: center;
-    text-align: center;
-    border: 2px solid yellow;
+    justify-content: center;
 }

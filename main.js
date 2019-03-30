@@ -3,30 +3,6 @@ const printToDom = (divId, textToPrint) => {
     selectedDiv.innerHTML = textToPrint;
   };
 
-const printNavBar = () => {
-    if (document.body.id != 'taproom') {
-        return
-    } else {
-    let domString = ``;
-    domString +=
-    `<nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="#">Features</a>
-                <a class="nav-item nav-link" href="#">Pricing</a>
-                <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </div>
-        </div>
-    </nav>`
-    printToDom('navBar', domString);
-  }
-};
-
 const printMap = () => {
     if (document.body.id != 'taproom') {
         return
@@ -42,12 +18,14 @@ const printContactInfo = () => {
         return
     } else {
     let domString = ``;
-    domString += `<h3>Stop by for a visit!</h3>`;
-    domString += `<h5>Kiss the Goat Brewery</h5>`;
-    domString += `<p>500 Interstate Blvd South</p>`;
-    domString += `<p>Nashville, Tennessee 37210</p>`;
-    domString += `<p>(615)736-0000</p>`;
-    domString += `<p>Email us to request a tour!</p>`;
+    domString += `<div class="infoContainer">`
+    domString +=    `<h3>Stop by for a visit!</h3>`;
+    domString +=    `<h5>Kiss the Goat Brewery</h5>`;
+    domString +=    `<p>500 Interstate Blvd South</p>`;
+    domString +=    `<p>Nashville, Tennessee 37210</p>`;
+    domString +=    `<p>(615)736-0000</p>`;
+    domString +=    `<p>Email us to request a tour!</p>`;
+    domString += `</div>`
     printToDom('contactInfoContainer', domString);
     }
 };
@@ -117,7 +95,6 @@ const printCart = () =>{
 
 const init = () =>{
     printCart();
-    printNavBar();
     printMap();
     printContactInfo();
 };
