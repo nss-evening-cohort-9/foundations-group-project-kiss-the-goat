@@ -9,15 +9,27 @@ body {
 }
  
 /* NAVBAR STYLING */
-/* 
+
 #topNav {
     background-color: #f44336;
+
 }
 
 .navbar-brand, .nav-item {
     color: rgb(235, 235, 235);
     font-size: 1.5em; 
+    padding: 4px;
 }
+
+.navbar-toggler, .navbar-toggler-icon {
+    border-color: white;
+
+}
+
+
+/* .navbar-toggler-icon {
+    color: white;
+} */
 
 .navbar-brand {
     border: 1px solid white;
@@ -38,5 +50,9 @@ body {
     color: white;
 }
 
- */
+.navbar-nav {
+    float: right;
+}
+
+
 
