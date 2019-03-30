@@ -45,7 +45,7 @@ const printContactInfo = () => {
     domString += `<h3>Stop by for a visit!</h3>`;
     domString += `<h5>Kiss the Goat Brewery</h5>`;
     domString += `<p>500 Interstate Blvd South</p>`;
-    domString += `<p>Nashville, Tenneseee 37210</p>`;
+    domString += `<p>Nashville, Tennessee 37210</p>`;
     domString += `<p>(615)736-0000</p>`;
     domString += `<p>Email us to request a tour!</p>`;
     printToDom('contactInfoContainer', domString);
@@ -119,6 +119,7 @@ const init = () =>{
     printCart();
     printNavBar();
     printMap();
+    printContactInfo();
 };
 
 init();
