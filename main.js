@@ -196,12 +196,25 @@ const printCart = () =>{
 
 
 
-
-
+const imageArray = [
+    {
+        img: "./imgs/animal-black-and-white-close-up-86594.jpg",
+        caption: "",
+    }
+    {
+        img: "./imgs/alcohol-alcoholic-beverage-ale-1624174.jpg",
+        caption: "",
+    }
+    {
+        img: "./imgs/alcohol-beer-beverage-1571701.jpg",
+        caption: "",
+    }
+];
 
 const imageLoop = () => {
-    
-};
+    imageArray.forEach((image) => {
+        
+    });
 
 const imageBuilder = () => {
     let domString = '';
