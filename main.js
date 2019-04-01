@@ -2,6 +2,7 @@
 const beerArray = [
     {
         name: 'beer 1',
+        id: 'beer1',
         img: 'https://picsum.photos/200/300/?random',
         abv: '4.8%',
         description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
@@ -10,6 +11,7 @@ const beerArray = [
     },
     {
       name: 'beer 2',
+      id: 'beer2',
       img: 'https://picsum.photos/200/300/?random',
       abv: '12%',
       description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
@@ -18,6 +20,7 @@ const beerArray = [
   },
   {
       name: 'beer 3',
+      id: 'beer3',
       img: 'https://picsum.photos/200/300/?random',
       abv: '9%',
       description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
@@ -26,6 +29,7 @@ const beerArray = [
   },
   {
       name: 'beer 4',
+      id: 'beer4',
       img: 'https://picsum.photos/200/300/?random',
       abv: '5%',
       description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
@@ -34,6 +38,7 @@ const beerArray = [
   },
   {
       name: 'beer 5',
+      id: 'beer5',
       img: 'https://picsum.photos/200/300/?random',
       abv: '10%',
       description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
@@ -42,6 +47,7 @@ const beerArray = [
   },
   {
       name: 'beer 6',
+      id: 'beer6',
       img: 'https://picsum.photos/200/300/?random',
       abv: '7%',
       description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
@@ -50,6 +56,7 @@ const beerArray = [
   },
   {
       name: 'beer 7',
+      id: 'beer7',
       img: 'https://picsum.photos/200/300/?random',
       abv: '18%',
       description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
@@ -58,6 +65,7 @@ const beerArray = [
   },
   {
       name: 'beer 8',
+      id: 'beer8',
       img: 'https://picsum.photos/200/300/?random',
       abv: '10%',
       description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
@@ -65,15 +73,18 @@ const beerArray = [
       ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4']
   }
 ];
+const beerCartArray = [];
+
 
 const printToDom = (divId, textToPrint) => {
     const selectedDiv = document.getElementById(divId);
     selectedDiv.innerHTML = textToPrint;
   };
 
+//~~~~~~~~~~     PRODUCT PAGE    ~~~~~~~~~~//
 
-//~~~~~~~~~~     PRODUCT PAGE: CARD PRINTER     ~~~~~~~~~~//
-const beerCardBuilder = (arrayToPrint) => {
+
+const beerCardBuilder = (arrayToPrint) => {//~~~~~~~~~~~~~~~~~~~~~~~~~~~~CARD BUILDER FUNCTION~~~~//
     const productPage = document.getElementById('productCon');
     if(productPage === null){//page conditional
         return;
@@ -85,8 +96,8 @@ const beerCardBuilder = (arrayToPrint) => {
         for(let i=0; i<beer.ing.length; i++){
             ingList += ` <li class="list-group-item">${beer.ing[i]}</li>`;
         };
-        let beerId = `${beer.name}`;
-        beerId= beerId.replace(/ /g, '');
+        // let beerId = `${beer.name}`;
+        // beerId= beerId.replace(/ /g, '');
         stringToPrint += 
         `<div class="card productCard col-2">
             <img class="card-img-top" src="${beer.img}" alt="Card image cap">
@@ -97,12 +108,13 @@ const beerCardBuilder = (arrayToPrint) => {
                 <p>ABV: ${beer.abv}</p>
                 <br>
                 <p>Price: $${beer.price}</p>
-                <p class="BtnCon${beerId}">
-                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#seeMore${beerId}" aria-expanded="false" aria-controls="collapseExample">
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#seeMore${beer.id}" aria-expanded="false" aria-controls="collapseExample">
                         See More
                     </button>
-                </p>
-                <div class="collapse" id="seeMore${beerId}">
+                    <button class="btn btn-primary addToCart" type="button" id="add${beer.id}">
+                        Add To Cart
+                    </button>
+                <div class="collapse" id="seeMore${beer.id}">
                     <ul class="list-group list-group-flush">
                     <h6>Ingredients</h6>
                     ${ingList}
@@ -113,8 +125,41 @@ const beerCardBuilder = (arrayToPrint) => {
         ingList=``;
     })
     printToDom('productCon', stringToPrint);
+    addToCartListeners();
 }};
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
+const addToCart = (e) =>{//~~~~~~~~~~~~~~~~~~~~ADD TO CART ARRAY PUSH~~~~~~~~~~~~~~//
+    const id = e.target.id;
+    for(i=0;i<beerArray.length; i++){
+        if(id===`add${beerArray[i].id}`){
+            const cartItem = {
+                name: `${beerArray[i].name}`,
+                imgUrl: `${beerArray[i].img}`,
+                pricePer: `${beerArray[i].price}`,
+                quantity: 1
+            };
+            beerCartArray.unshift(cartItem);
+            console.log(cartItem);
+        };
+    };
+};
+const addToCartListeners = () => {//~~~~~~~~~~~ADD TO CART LISTENERS~~~~~~~~~~~~~//
+    for(i=0; i<beerArray.length; i++){
+        const btnId= document.getElementById(`add${beerArray[i].id}`);
+        btnId.addEventListener('click', addToCart);
+    }
+}
+// IGNORE THIS
+// const addToCart = () => {
+//     for(i=0; i<beerArray.length; i++){
+//         let btnId = `addToCart${beerArray[i].name}`;
+//         btnId = btnId.replace(/ /g, '');
+//         let btnIdSelector = document.getElementById(`${btnId}`)
+//         btnIdSelector.addEventListener('click',)
+//     }
+// };
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
 
 // const printNavBar = () => {
