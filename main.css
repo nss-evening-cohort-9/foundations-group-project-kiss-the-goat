@@ -3,7 +3,7 @@
 }
 
 body {
-    background-color: white;
+    background-color: black;
     font-family: 'Pathway Gothic One', sans-serif;
     letter-spacing: .8px;
 }
@@ -59,12 +59,21 @@ body {
 }
 
 /* Carousel */
-.carousel {
+/* .carousel {
     max-width: 600px;
     margin: 10px;
     border: 1px solid transparent;
     border-radius: 10px;
+} */
+
+.myCarousel {
+    border: 2px solid #f44336;
+    border-radius: 6px;
+    margin: 5em 5em 5em 0;
+    max-height: 25em;
+    min-height: 25em;
 }
+
 
 
 /* Maps */

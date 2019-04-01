@@ -195,38 +195,30 @@ const printCart = () =>{
 };
 
 
-
-const imageArray = [
-    {
-        img: "./imgs/animal-black-and-white-close-up-86594.jpg",
-        caption: "",
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~ IMAGE CAROUSEL INDEX.HTM L~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+const imagesArray = ['./imgs/animal-black-and-white-close-up-86594.jpg', './imgs/alcohol-alcoholic-beverage-ale-1624174.jpg', './imgs/alcohol-beer-beverage-1571701.jpg'];
+let imgTimer = 0
+let changeImg = () => {
+    let time = 3000;
+    document.getElementById('slide').src = imagesArray[imgTimer];
+    // imagesArray.forEach((img) => {
+    if (imgTimer < imagesArray.length -1) {
+        imgTimer++;
+    } else {
+        imgTimer = 0;
     }
-    {
-        img: "./imgs/alcohol-alcoholic-beverage-ale-1624174.jpg",
-        caption: "",
-    }
-    {
-        img: "./imgs/alcohol-beer-beverage-1571701.jpg",
-        caption: "",
-    }
-];
-
-const imageLoop = () => {
-    imageArray.forEach((image) => {
-        
-    });
-
-const imageBuilder = () => {
-    let domString = '';
-
-
+    setTimeout("changeImg()", time);
+// });
+};
 
 
 const init = () =>{
-    printCart();
-    printNavBar();
-    printMap();
-    beerCardBuilder(beerArray);
-    setInterval(imageBuilder, 1000);
+    // printCart();
+    // printNavBar();
+    // printMap();
+    // beerCardBuilder(beerArray);
+    // setInterval(imageBuilder, 1000);
+    // imageLoop();
+    changeImg();
 };
 init();
