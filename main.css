@@ -15,14 +15,22 @@ body {
 
 }
 
-/* ~~~~~~~~~~~~~    PRODUCT PAGE     ~~~~~~~~~~~~~~*/
+/* ~~~~~~~~~~~~~-------PRODUCT PAGE-------~~~~~~~~~~~~~~*/
 .productCon{
     display: flex;
     flex-flow: row wrap;
-    width: 50%;
+    justify-content: center;
     margin: 0 auto;
 }
-/* ~~~~~~~~~~~~~    ------------     ~~~~~~~~~~~~~~*/
+.card{
+    margin: 2.5%;
+    text-align: center;
+}
+
+/* .seeMore{
+    visibility: hidden;
+} */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 .navbar-brand, .nav-item {
     color: rgb(235, 235, 235);

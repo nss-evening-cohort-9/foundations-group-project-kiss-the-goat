@@ -85,8 +85,10 @@ const beerCardBuilder = (arrayToPrint) => {
         for(let i=0; i<beer.ing.length; i++){
             ingList += ` <li class="list-group-item">${beer.ing[i]}</li>`;
         };
+        let beerId = `${beer.name}`;
+        beerId= beerId.replace(/ /g, '');
         stringToPrint += 
-        `<div class="card productCard col-3">
+        `<div class="card productCard col-2">
             <img class="card-img-top" src="${beer.img}" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">${beer.name}</h5>
@@ -95,19 +97,21 @@ const beerCardBuilder = (arrayToPrint) => {
                 <p>ABV: ${beer.abv}</p>
                 <br>
                 <p>Price: $${beer.price}</p>
+                <p class="BtnCon${beerId}">
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#seeMore${beerId}" aria-expanded="false" aria-controls="collapseExample">
+                        See More
+                    </button>
+                </p>
+                <div class="collapse" id="seeMore${beerId}">
+                    <ul class="list-group list-group-flush">
+                    <h6>Ingredients</h6>
+                    ${ingList}
+                    </ul>
+                </div>
             </div>
-            <ul class="list-group list-group-flush">
-                <h6>Ingredients</h6>
-                ${ingList}
-            </ul>
         </div>`;
         ingList=``;
     })
-        // BUTTONS FOR FUTURE FEATURES
-    //     <div class="card-body">
-    //     <a href="#" class="card-link">Card link</a>
-    //     <a href="#" class="card-link">Another link</a>
-    //   </div>
     printToDom('productCon', stringToPrint);
 }};
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
