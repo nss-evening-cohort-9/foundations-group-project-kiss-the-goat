@@ -239,7 +239,7 @@ const shoppingCartArray = [
 const printCart = () =>{
     const checkoutPage = document.getElementById('checkout-card-container');
     if(checkoutPage===null){
-        return
+        return;
     } else{
     let domString = '';
     shoppingCartArray.forEach((beer)=> {
