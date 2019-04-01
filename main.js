@@ -195,37 +195,48 @@ const printCart = () =>{
 };
 
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~ IMAGE CAROUSEL INDEX.HTM L~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
-// const imagesArray = ['./imgs/animal-black-and-white-close-up-86594.jpg', './imgs/alcohol-alcoholic-beverage-ale-1624174.jpg', './imgs/alcohol-beer-beverage-1571701.jpg'];
-// let imgCounter = 0
-// let changeImg = () => {
-//     let time = 3000;
-//     document.getElementById('slide').src = imagesArray[imgCounter];
-//     if (imgCounter < imagesArray.length -1) {
-//         imgCounter++;
-//     } else {
-//         imgCounter = 0;
-//     }
-//     setTimeout("changeImg()", time);
-// };
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~ INDEX EMAIL SUBSCRIBE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+const subscribeEmail = [];
+
+const newSubscriber = () => {
+    let newDrinker = {
+        fullName: document.getElementById('fullnameSubscribe').value,
+        email: document.getElementById('exampleInputEmail1').value,
+    }
+    //validation - bootstrap covers most of this
+            // let textInput = document.getElementById('fullnameSubscribe').value;
+            // let textInput2 = document.getElementById('exampleInputEmail1').value;
+            // if (textInput.value !== null && textInput === "") {
+            //     alert('Please enter a first and last name');
+            // } else if (textInput2.value !== null && textInput2 === "") {
+            //     alert('You must enter a valid email address')
+            // } else {
+            // }
+    subscribeEmail.push(newDrinker);
+};
+// Event listener:
+// document.getElementById('subscribeBtn').addEventListener('click', newSubscriber())
 
 
-const imagesArray = ['./imgs/animal-black-and-white-close-up-86594.jpg', './imgs/alcohol-alcoholic-beverage-ale-1624174.jpg', './imgs/alcohol-beer-beverage-1571701.jpg'];
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~ IMAGE CAROUSEL INDEX.HTML ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
+const imagesArray = ['./imgs/1.jpg', './imgs/2.jpg', './imgs/3.jpg', './imgs/4.jpg', './imgs/6.jpg', './imgs/6.jpg', './imgs/7.jpg', './imgs/8.jpg', './imgs/9.jpg', './imgs/10.jpg'];
 let time = 3500;
 // let i = 0;
 
 // THIS ONE WORKS BEST !!!!!!
-// const changeImg = () => {
-//     let imgString = ''; 
-//     imagesArray.forEach((image, i) => {
-//         setTimeout(() => {
-//             imgString = `<img class="myCarousel" src=${image}>`;
-//             console.log(image);
-//             printToDom('carouselLoop', imgString);
-//         }, time * i);
-//         return i;
-//     });
-// };
+const changeImg = () => {
+    let imgString = ''; 
+    imagesArray.forEach((image, i) => {
+        setTimeout(() => {
+            imgString = `<img class="myCarousel" src=${image}>`;
+            console.log(image);
+            printToDom('carouselLoop', imgString);
+        }, time * i);
+        return i;
+    });
+};
 
 
 // Old for loop BUT works
