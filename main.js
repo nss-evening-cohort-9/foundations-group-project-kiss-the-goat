@@ -132,12 +132,7 @@ const addToCart = (e) =>{//~~~~~~~~~~~~~~~~~~~~ADD TO CART ARRAY PUSH~~~~~~~~~~~
     const id = e.target.id;
     for(i=0;i<beerArray.length; i++){
         if(id===`add${beerArray[i].id}`){
-            const cartItem = {
-                name: `${beerArray[i].name}`,
-                imgUrl: `${beerArray[i].img}`,
-                pricePer: `${beerArray[i].price}`,
-                quantity: 1
-            };
+            const cartItem = beerArray[i];
             beerCartArray.unshift(cartItem);
             console.log(cartItem);
         };
