@@ -67,14 +67,28 @@ body {
 } */
 
 .myCarousel {
-    border: 2px solid #f44336;
+    /* border: 2px solid  rgba(249, 249, 249, 0.8); */
+    box-shadow: 0 10px 40px 10px rgba(244,67,54,.1);
     border-radius: 6px;
     margin: 5em 5em 5em 0;
     max-height: 25em;
     min-height: 25em;
+    max-width: 35em;
+    min-width:  35em;
+}
+
+.myCarousel:hover {
+    cursor: crosshair;
 }
 
 
+/* ========= FORM INDEX.HTML =========== */
+#formDiv {
+    border: 45px solid white;
+    border-radius: 12px;
+    padding: 200px;
+    margin-right: 40px;
+}
 
 /* Maps */
 

@@ -196,20 +196,65 @@ const printCart = () =>{
 
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~ IMAGE CAROUSEL INDEX.HTM L~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+// const imagesArray = ['./imgs/animal-black-and-white-close-up-86594.jpg', './imgs/alcohol-alcoholic-beverage-ale-1624174.jpg', './imgs/alcohol-beer-beverage-1571701.jpg'];
+// let imgCounter = 0
+// let changeImg = () => {
+//     let time = 3000;
+//     document.getElementById('slide').src = imagesArray[imgCounter];
+//     if (imgCounter < imagesArray.length -1) {
+//         imgCounter++;
+//     } else {
+//         imgCounter = 0;
+//     }
+//     setTimeout("changeImg()", time);
+// };
+
+
 const imagesArray = ['./imgs/animal-black-and-white-close-up-86594.jpg', './imgs/alcohol-alcoholic-beverage-ale-1624174.jpg', './imgs/alcohol-beer-beverage-1571701.jpg'];
-let imgTimer = 0
-let changeImg = () => {
-    let time = 3000;
-    document.getElementById('slide').src = imagesArray[imgTimer];
-    // imagesArray.forEach((img) => {
-    if (imgTimer < imagesArray.length -1) {
-        imgTimer++;
-    } else {
-        imgTimer = 0;
-    }
-    setTimeout("changeImg()", time);
-// });
+let time = 500;
+// let i = 0;
+// THIS ONE WORKS!!!!!!
+// const changeImg = () => {
+//     let imgString = ''; 
+//     imagesArray.forEach((image, i) => {
+//         setTimeout(() => {
+//             imgString = `<img class="myCarousel" src=${image}>`;
+//             console.log(image);
+//             printToDom('carouselLoop', imgString);
+//         }, time * i);
+//         return i;
+//     });
+// };
+
+// Old for loop but works
+const changeImg = () => {
+    let domString = ''; 
+    for (let i = 0; i < imagesArray.length; i++) {
+        setTimeout(() => {
+            domString = `<img class="myCarousel" src=${imagesArray[i]}>`;
+            console.log(imagesArray[i]);
+            printToDom('carouselLoop', domString);
+        }, time * i);
+    };
 };
+
+// THIS ALSO WORKS!!!!
+// const changeImg = () => {
+//     let domString = '';
+//     let i = 0;
+//     do {
+//         (function (i) {
+//             setTimeout(function () {
+//               domString = `<img class="myCarousel" src=${imagesArray[i]}>`;
+//               console.log(imagesArray[i]);
+//               printToDom('carouselLoop', domString);
+//             }, 1000 * i);
+//           })(i);
+//           i++;     
+//     } 
+//     while (i < imagesArray.length);
+//         // setInterval('changeImg()', time);
+// };
 
 
 const init = () =>{
