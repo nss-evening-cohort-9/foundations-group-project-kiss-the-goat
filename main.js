@@ -7,7 +7,8 @@ const beerArray = [
         abv: '4.8%',
         description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
         price: 9.99,
-        ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4']
+        ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4'],
+        quantity: 1
     },
     {
       name: 'beer 2',
@@ -16,7 +17,8 @@ const beerArray = [
       abv: '12%',
       description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
       price: 15.99,
-      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4']
+      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4'],
+      quantity: 1
   },
   {
       name: 'beer 3',
@@ -25,7 +27,8 @@ const beerArray = [
       abv: '9%',
       description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
       price: 7.99,
-      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4']
+      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4'],
+      quantity: 1
   },
   {
       name: 'beer 4',
@@ -34,7 +37,8 @@ const beerArray = [
       abv: '5%',
       description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
       price: 13.99,
-      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4']
+      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4'],
+      quantity: 1
   },
   {
       name: 'beer 5',
@@ -43,7 +47,8 @@ const beerArray = [
       abv: '10%',
       description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
       price: 16.99,
-      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4']
+      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4'],
+      quantity: 1
   },
   {
       name: 'beer 6',
@@ -52,7 +57,8 @@ const beerArray = [
       abv: '7%',
       description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
       price: 24.99,
-      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4']
+      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4'],
+      quantity: 1
   },
   {
       name: 'beer 7',
@@ -61,7 +67,8 @@ const beerArray = [
       abv: '18%',
       description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
       price: 29.99,
-      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4']
+      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4'],
+      quantity: 1
   },
   {
       name: 'beer 8',
@@ -70,7 +77,8 @@ const beerArray = [
       abv: '10%',
       description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
       price: 12.99,
-      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4']
+      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4'],
+      quantity: 1
   }
 ];
 const beerCartArray = [];
@@ -108,12 +116,13 @@ const beerCardBuilder = (arrayToPrint) => {//~~~~~~~~~~~~~~~~~~~~~~~~~~~~CARD BU
                 <p>ABV: ${beer.abv}</p>
                 <br>
                 <p>Price: $${beer.price}</p>
-                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#seeMore${beer.id}" aria-expanded="false" aria-controls="collapseExample">
+                    <button class="btn btn-primary seeMore" type="button" data-toggle="collapse" data-target="#seeMore${beer.id}" aria-expanded="false" aria-controls="collapseExample">
                         See More
                     </button>
                     <button class="btn btn-primary addToCart" type="button" id="add${beer.id}">
                         Add To Cart
                     </button>
+                    <a href="./checkoutPage.html" class="linkCo link${beer.id}" id="link${beer.id}">Checkout Here!</a>
                 <div class="collapse" id="seeMore${beer.id}">
                     <ul class="list-group list-group-flush">
                     <h6>Ingredients</h6>
@@ -130,11 +139,15 @@ const beerCardBuilder = (arrayToPrint) => {//~~~~~~~~~~~~~~~~~~~~~~~~~~~~CARD BU
 
 const addToCart = (e) =>{//~~~~~~~~~~~~~~~~~~~~ADD TO CART ARRAY PUSH~~~~~~~~~~~~~~//
     const id = e.target.id;
+    let idTxt = e.target;
+
     for(i=0;i<beerArray.length; i++){
         if(id===`add${beerArray[i].id}`){
             const cartItem = beerArray[i];
+            const aId = document.getElementById(`link${beerArray[i].id}`)
             beerCartArray.unshift(cartItem);
-            console.log(cartItem);
+            idTxt.innerHTML = 'Added!'
+            aId.style.visibility='visible';
         };
     };
 };
