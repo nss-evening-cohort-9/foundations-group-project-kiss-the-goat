@@ -211,9 +211,10 @@ const printCart = () =>{
 
 
 const imagesArray = ['./imgs/animal-black-and-white-close-up-86594.jpg', './imgs/alcohol-alcoholic-beverage-ale-1624174.jpg', './imgs/alcohol-beer-beverage-1571701.jpg'];
-let time = 500;
+let time = 3500;
 // let i = 0;
-// THIS ONE WORKS!!!!!!
+
+// THIS ONE WORKS BEST !!!!!!
 // const changeImg = () => {
 //     let imgString = ''; 
 //     imagesArray.forEach((image, i) => {
@@ -226,19 +227,21 @@ let time = 500;
 //     });
 // };
 
-// Old for loop but works
-const changeImg = () => {
-    let domString = ''; 
-    for (let i = 0; i < imagesArray.length; i++) {
-        setTimeout(() => {
-            domString = `<img class="myCarousel" src=${imagesArray[i]}>`;
-            console.log(imagesArray[i]);
-            printToDom('carouselLoop', domString);
-        }, time * i);
-    };
-};
 
-// THIS ALSO WORKS!!!!
+// Old for loop BUT works
+// const changeImg = () => {
+//     let domString = ''; 
+//     for (let i = 0; i < imagesArray.length; i++) {
+//         setTimeout(() => {
+//             domString = `<img class="myCarousel" src=${imagesArray[i]}>`;
+//             console.log(imagesArray[i]);
+//             printToDom('carouselLoop', domString);
+//         }, time * i);
+//     };
+// };
+
+
+// THIS do/while also works
 // const changeImg = () => {
 //     let domString = '';
 //     let i = 0;
@@ -255,7 +258,6 @@ const changeImg = () => {
 //     while (i < imagesArray.length);
 //         // setInterval('changeImg()', time);
 // };
-
 
 const init = () =>{
     // printCart();
