@@ -188,7 +188,6 @@ const printCart = () =>{
     } else{
     let domString = '';
     let i = 0
-    if(document.body.id === 'checkoutPage'){
     shoppingCartArray.forEach((beer)=> {
         
         if(beer.quantity >= 1){
