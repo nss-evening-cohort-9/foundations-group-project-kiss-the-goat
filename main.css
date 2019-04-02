@@ -22,7 +22,9 @@ body {
     width: 50%;
     margin: 0 auto;
 }
+
 /* ~~~~~~~~~~~~~    END PRODUCT PAGE     ~~~~~~~~~~~~~~*/
+
 
 .navbar-brand, .nav-item {
     color: rgb(255, 253, 253);
@@ -102,6 +104,7 @@ body {
 
 .socialA {
     top: 25px;
+    font-size: 20px;
     font-size: 18px; 
     flex-direction: column;
     /* flex-flow: space-between nowrap; */
