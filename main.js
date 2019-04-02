@@ -66,7 +66,12 @@ const printContactInfo = () => {
 
 //This causes an alert to appear when someone clicks the 'Schedule a Tour' button on the Taproom page
 const scheduleAlert = () => {
+    const scheduleTour = document.getElementById('scheduleTour');
+    if (scheduleTour === null) {
+        return
+    } else {
     alert("Your request to schedule a brewery tour has been received. We'll be in touch shortly!");
+    }
 };
 
 //This function prints 'Meet Our Brewers' above the photos of brewers on the taproom page

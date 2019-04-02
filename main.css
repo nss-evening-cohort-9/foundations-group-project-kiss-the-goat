@@ -223,6 +223,7 @@ body {
     display: flex;
     margin: 15px;
     background-color: #53a7ea;
+    border-radius: 5px;
 }
 
 #mapContainer {
@@ -237,26 +238,46 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
+    width: 85%;
+}
+
+#contactText > h2 {
+    font-size: 3em;
+    margin-bottom: 15px;
+}
+
+#contactText > p {
+    font-size: 1.5em;
 }
 
 #scheduleTour {
     border-radius: 5px;
+    font-size: 1.5em;
 }
 
 .brewerContainer {
     display: flex;
+    justify-content: space-around;
     flex-wrap: wrap;
     flex-direction: row;
 }
 
-.brewerCard {
-    padding: 0;
+.borderCardContainer {
+    display: flex;
+    justify-content: space-around;
 }
 
-.brewerPhoto {
+.brewerCard {
+    padding: 0;
+    border-radius: 6px;
+    background-color: black;
+}
+
+.brewerPhotoWrap {
     width: 85%;
     align-self: center;
     margin-top: 10px;
+    border-radius: 5px;
 }
 
 #brewerTitleContainer {
@@ -272,9 +293,15 @@ body {
 /* relevant styles */
 .brewerPhotoAndDescriptionWrap {
     position: relative;
+    display: flex;
+    align-content: center;
 }
 
 .brewerDescriptionWrap {
+    width: 85%;
+    align-self: center;
+    margin-top: 7px;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
     justify-content: center;
