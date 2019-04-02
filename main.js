@@ -238,10 +238,92 @@ const printCart = () =>{
     printToDom('checkout-card-container', domString);
 };
 };
+    
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~ INDEX EMAIL SUBSCRIBE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+const subscribeEmail = [];
+
+const newSubscriber = () => {
+    let newDrinker = {
+        fullName: document.getElementById('fullnameSubscribe').value,
+        email: document.getElementById('exampleInputEmail1').value,
+    }
+    //validation - bootstrap covers most of this
+            // let textInput = document.getElementById('fullnameSubscribe').value;
+            // let textInput2 = document.getElementById('exampleInputEmail1').value;
+            // if (textInput.value !== null && textInput === "") {
+            //     alert('Please enter a first and last name');
+            // } else if (textInput2.value !== null && textInput2 === "") {
+            //     alert('You must enter a valid email address')
+            // } else {
+            // }
+    subscribeEmail.push(newDrinker);
+};
+// Event listener:
+// document.getElementById('subscribeBtn').addEventListener('click', newSubscriber())
+
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~ IMAGE CAROUSEL INDEX.HTML ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
+const imagesArray = ['./imgs/1.jpg', './imgs/2.jpg', './imgs/3.jpg', './imgs/4.jpg', './imgs/6.jpg', './imgs/6.jpg', './imgs/7.jpg', './imgs/8.jpg', './imgs/9.jpg', './imgs/10.jpg'];
+let time = 3500;
+// let i = 0;
+
+// THIS ONE WORKS BEST !!!!!!
+const changeImg = () => {
+    let imgString = ''; 
+    imagesArray.forEach((image, i) => {
+        setTimeout(() => {
+            imgString = `<img class="myCarousel" src=${image}>`;
+            console.log(image);
+            printToDom('carouselLoop', imgString);
+        }, time * i);
+        return;
+    });
+};
+
+
+// Old for loop BUT works
+// const changeImg = () => {
+//     let domString = ''; 
+//     for (let i = 0; i < imagesArray.length; i++) {
+//         setTimeout(() => {
+//             domString = `<img class="myCarousel" src=${imagesArray[i]}>`;
+//             console.log(imagesArray[i]);
+//             printToDom('carouselLoop', domString);
+//         }, time * i);
+//     };
+// };
+
+
+// THIS do/while also works
+// const changeImg = () => {
+//     let domString = '';
+//     let i = 0;
+//     do {
+//         (function (i) {
+//             setTimeout(function () {
+//               domString = `<img class="myCarousel" src=${imagesArray[i]}>`;
+//               console.log(imagesArray[i]);
+//               printToDom('carouselLoop', domString);
+//             }, 1000 * i);
+//           })(i);
+//           i++;     
+//     } 
+//     while (i < imagesArray.length);
+//         // setInterval('changeImg()', time);
+// };
+
+
+// ~~~~~~~~~~~~~~~~~~~~ BEER CART ~~~~~~~~~~~~~~~~~~~~
+// beerInCart.push(document.getElementById().value);
 
 const init = () =>{
     printCart();
     printMap();
     beerCardBuilder(beerArray);
+    changeImg();
 };
 init();
