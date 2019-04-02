@@ -184,7 +184,6 @@ const beerInCart = [];
 const printCart = () =>{
     let domString = '';
     let i = 0
-    if(document.body.id === 'checkoutPage'){
     shoppingCartArray.forEach((beer)=> {
         
         if(beer.quantity >= 1){
@@ -214,9 +213,7 @@ const printCart = () =>{
         i++
     });
     printToDom('checkout-card-container', domString);
-    } else {
-        return;
-    };
+    
 };
 
 beerInCart.push(document.getElementById().value);
