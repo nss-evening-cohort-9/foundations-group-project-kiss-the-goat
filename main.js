@@ -104,8 +104,6 @@ const beerCardBuilder = (arrayToPrint) => {//~~~~~~~~~~~~~~~~~~~~~~~~~~~~CARD BU
         for(let i=0; i<beer.ing.length; i++){
             ingList += ` <li class="list-group-item">${beer.ing[i]}</li>`;
         };
-        // let beerId = `${beer.name}`;
-        // beerId= beerId.replace(/ /g, '');
         stringToPrint += 
         `<div class="card productCard col-2">
             <img class="card-img-top" src="${beer.img}" alt="Card image cap">
@@ -157,39 +155,8 @@ const addToCartListeners = () => {//~~~~~~~~~~~ADD TO CART LISTENERS~~~~~~~~~~~~
         btnId.addEventListener('click', addToCart);
     }
 }
-// IGNORE THIS
-// const addToCart = () => {
-//     for(i=0; i<beerArray.length; i++){
-//         let btnId = `addToCart${beerArray[i].name}`;
-//         btnId = btnId.replace(/ /g, '');
-//         let btnIdSelector = document.getElementById(`${btnId}`)
-//         btnIdSelector.addEventListener('click',)
-//     }
-// };
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
-
-
-// const printNavBar = () => {
-
-//     let domString = ``;
-//     domString +=
-//     `<nav class="navbar navbar-expand-lg navbar-light bg-light">
-//         <a class="navbar-brand" href="#">Navbar</a>
-//         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-//             <span class="navbar-toggler-icon"></span>
-//         </button>
-//         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-//             <div class="navbar-nav">
-//                 <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-//                 <a class="nav-item nav-link" href="#">Features</a>
-//                 <a class="nav-item nav-link" href="#">Pricing</a>
-//                 <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-//             </div>
-//         </div>
-//     </nav>`
-//     printToDom('navBar', domString);
-// };
 
 const printMap = () => {
     const mapContainer = document.getElementById('mapContainer');
@@ -239,16 +206,12 @@ let shoppingCartArray = [
 const beerInCart = [];
 
 const printCart = () =>{
-<<<<<<< HEAD
     const checkoutPage = document.getElementById('checkout-card-container');
     if(checkoutPage===null){
         return;
     } else{
-=======
->>>>>>> master
     let domString = '';
     let i = 0
-    if(document.body.id === 'checkoutPage'){
     shoppingCartArray.forEach((beer)=> {
         
         if(beer.quantity >= 1){
@@ -269,25 +232,15 @@ const printCart = () =>{
             domString += `      </form>`;
             domString += `  </div>`;
             domString += `</div>`;
-            
-            
-            
-            //shoppingCartArray[i].quantity = document.getElementById(`${i}Beer`).value
-          
         };
         i++
     });
     printToDom('checkout-card-container', domString);
-    } else {
-        return;
-    };
 };
-
-beerInCart.push(document.getElementById().value);
+};
 
 const init = () =>{
     printCart();
-    // printNavBar();
     printMap();
     beerCardBuilder(beerArray);
 };
