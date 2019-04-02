@@ -182,10 +182,6 @@ let shoppingCartArray = [
 const beerInCart = [];
 
 const printCart = () =>{
-    const checkoutPage = document.getElementById('checkout-card-container');
-    if(checkoutPage===null){
-        return
-    } else{
     let domString = '';
     let i = 0
     shoppingCartArray.forEach((beer)=> {
@@ -217,7 +213,9 @@ const printCart = () =>{
         i++
     });
     printToDom('checkout-card-container', domString);
-}
+    } else {
+        return;
+    };
 };
 
 beerInCart.push(document.getElementById().value);
