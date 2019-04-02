@@ -2,78 +2,97 @@
 const beerArray = [
     {
         name: 'beer 1',
+        id: 'beer1',
         img: 'https://picsum.photos/200/300/?random',
         abv: '4.8%',
         description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
         price: 9.99,
-        ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4']
+        ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4'],
+        quantity: 1
     },
     {
       name: 'beer 2',
+      id: 'beer2',
       img: 'https://picsum.photos/200/300/?random',
       abv: '12%',
       description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
       price: 15.99,
-      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4']
+      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4'],
+      quantity: 1
   },
   {
       name: 'beer 3',
+      id: 'beer3',
       img: 'https://picsum.photos/200/300/?random',
       abv: '9%',
       description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
       price: 7.99,
-      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4']
+      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4'],
+      quantity: 1
   },
   {
       name: 'beer 4',
+      id: 'beer4',
       img: 'https://picsum.photos/200/300/?random',
       abv: '5%',
       description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
       price: 13.99,
-      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4']
+      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4'],
+      quantity: 1
   },
   {
       name: 'beer 5',
+      id: 'beer5',
       img: 'https://picsum.photos/200/300/?random',
       abv: '10%',
       description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
       price: 16.99,
-      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4']
+      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4'],
+      quantity: 1
   },
   {
       name: 'beer 6',
+      id: 'beer6',
       img: 'https://picsum.photos/200/300/?random',
       abv: '7%',
       description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
       price: 24.99,
-      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4']
+      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4'],
+      quantity: 1
   },
   {
       name: 'beer 7',
+      id: 'beer7',
       img: 'https://picsum.photos/200/300/?random',
       abv: '18%',
       description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
       price: 29.99,
-      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4']
+      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4'],
+      quantity: 1
   },
   {
       name: 'beer 8',
+      id: 'beer8',
       img: 'https://picsum.photos/200/300/?random',
       abv: '10%',
       description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
       price: 12.99,
-      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4']
+      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4'],
+      quantity: 1
   }
 ];
+const beerCartArray = [];
+
 
 const printToDom = (divId, textToPrint) => {
     const selectedDiv = document.getElementById(divId);
     selectedDiv.innerHTML = textToPrint;
   };
 
+//~~~~~~~~~~     PRODUCT PAGE    ~~~~~~~~~~//
 
-//~~~~~~~~~~     PRODUCT PAGE: CARD PRINTER     ~~~~~~~~~~//
-const beerCardBuilder = (arrayToPrint) => {
+
+const beerCardBuilder = (arrayToPrint) => {//~~~~~~~~~~~~~~~~~~~~~~~~~~~~CARD BUILDER FUNCTION~~~~//
     const productPage = document.getElementById('productCon');
     if(productPage === null){//page conditional
         return;
@@ -86,7 +105,7 @@ const beerCardBuilder = (arrayToPrint) => {
             ingList += ` <li class="list-group-item">${beer.ing[i]}</li>`;
         };
         stringToPrint += 
-        `<div class="card productCard col-3">
+        `<div class="card productCard col-2">
             <img class="card-img-top" src="${beer.img}" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">${beer.name}</h5>
@@ -95,22 +114,51 @@ const beerCardBuilder = (arrayToPrint) => {
                 <p>ABV: ${beer.abv}</p>
                 <br>
                 <p>Price: $${beer.price}</p>
+                    <button class="btn btn-primary seeMore" type="button" data-toggle="collapse" data-target="#seeMore${beer.id}" aria-expanded="false" aria-controls="collapseExample">
+                        See More
+                    </button>
+                    <button class="btn btn-primary addToCart" type="button" id="add${beer.id}">
+                        Add To Cart
+                    </button>
+                    <a href="./checkoutPage.html" class="linkCo link${beer.id}" id="link${beer.id}">Checkout Here!</a>
+                <div class="collapse" id="seeMore${beer.id}">
+                    <ul class="list-group list-group-flush">
+                    <h6>Ingredients</h6>
+                    ${ingList}
+                    </ul>
+                </div>
             </div>
-            <ul class="list-group list-group-flush">
-                <h6>Ingredients</h6>
-                ${ingList}
-            </ul>
         </div>`;
         ingList=``;
     })
-        // BUTTONS FOR FUTURE FEATURES
-    //     <div class="card-body">
-    //     <a href="#" class="card-link">Card link</a>
-    //     <a href="#" class="card-link">Another link</a>
-    //   </div>
     printToDom('productCon', stringToPrint);
+    addToCartListeners();
 }};
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
+
+const addToCart = (e) =>{//~~~~~~~~~~~~~~~~~~~~ADD TO CART ARRAY PUSH~~~~~~~~~~~~~~//
+    const id = e.target.id;
+    let idTxt = e.target;
+
+    for(i=0;i<beerArray.length; i++){
+        if(id===`add${beerArray[i].id}`){
+            const cartItem = beerArray[i];
+            const aId = document.getElementById(`link${beerArray[i].id}`)
+            beerCartArray.unshift(cartItem);
+            idTxt.innerHTML = 'Added!'
+            aId.style.visibility='visible';
+        };
+    };
+};
+const addToCartListeners = () => {//~~~~~~~~~~~ADD TO CART LISTENERS~~~~~~~~~~~~~//
+    for(i=0; i<beerArray.length; i++){
+        const btnId= document.getElementById(`add${beerArray[i].id}`);
+        btnId.addEventListener('click', addToCart);
+    }
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
 
 const printMap = () => {
     const mapContainer = document.getElementById('mapContainer');
@@ -160,6 +208,10 @@ let shoppingCartArray = [
 const beerInCart = [];
 
 const printCart = () =>{
+    const checkoutPage = document.getElementById('checkout-card-container');
+    if(checkoutPage===null){
+        return;
+    } else{
     let domString = '';
     let i = 0
     shoppingCartArray.forEach((beer)=> {
@@ -182,17 +234,13 @@ const printCart = () =>{
             domString += `      </form>`;
             domString += `  </div>`;
             domString += `</div>`;
-            
-            
-            
-            //shoppingCartArray[i].quantity = document.getElementById(`${i}Beer`).value
-          
         };
         i++
     });
     printToDom('checkout-card-container', domString);
-    
 };
+};
+    
 
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~ INDEX EMAIL SUBSCRIBE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
@@ -223,44 +271,16 @@ const newSubscriber = () => {
 
 
 // Event listener: USE consEventListeners When MERGE time comes. copy and paste these events into that function please.
-constEventListeners2 = () => {
-    document.getElementById('').addEventListener('click', modalSubscribe)
+const EventListeners2 = () => {
+    const subscribeFunction = (e) => {
+        e.preventDefault();
+        $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+      })
+    };
+    
+    document.getElementById('subscribeBtn').addEventListener('click', subscribeFunction);
 };
-
-
-// const modalSubscribe = () => {
-//     let indexPage = document.getElementById('indexPage');
-//     if(indexPage === null){//page conditional
-//         return;
-//     }
-//     else {
-//         let modString = '';
-//         modString += `<div class="modal" tabindex="-1" role="dialog">`;
-//         modString += `   <div class="modal-dialog" role="document">`;
-//         modString += `       <div class="modal-content">`;
-//         modString += `           <div class="modal-header">`;
-//         modString += `        <h5 class="modal-title">Modal title</h5>`;
-//         modString += `    <button type="button" class="close" data-dismiss="modal" aria-label="Close">`;
-//         modString += `      <span aria-hidden="true">&times;</span>`;
-//         modString += `   </button>`;
-//         modString += `  </div>`;
-//         modString += `  <div class="modal-body">`;
-//         modString += `   <p>Modal body text goes here.</p>`;
-//         modString += `  </div>`;
-//         modString += `  <div class="modal-footer">`;
-//         modString += `    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>`;
-//         modString += `    <button type="button" class="btn btn-primary">Save changes</button>`;
-//         modString += `  </div>`;
-//         modString += `</div>`;
-//         modString += `</div>`;
-//         modString += `</div>`;
-//     }
-//     printToDom(, modString);
-
-// };
-
-
-// document.getElementById('subscribeBtn').addEventListener('click', newSubscriber())
 
 
 
@@ -324,12 +344,11 @@ const changeImg = () => {
 
 // ~~~~~~~~~~~~~~~~~~~~ BEER CART ~~~~~~~~~~~~~~~~~~~~
 
-
-
 const init = () =>{
     // printCart();
     printMap();
     beerCardBuilder(beerArray);
     changeImg();
+    EventListeners2();
 };
 init();

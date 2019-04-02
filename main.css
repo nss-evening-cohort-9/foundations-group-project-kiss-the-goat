@@ -15,13 +15,42 @@ body {
     border-bottom: 20px white solid;
 }
 
-/* ~~~~~~~~~~~~~    PRODUCT PAGE     ~~~~~~~~~~~~~~*/
+/* ~~~~~~~~~~~~~-------PRODUCT PAGE-------~~~~~~~~~~~~~~*/
 .productCon{
     display: flex;
     flex-flow: row wrap;
-    width: 50%;
+    justify-content: center;
     margin: 0 auto;
 }
+.productCard{
+    margin: 2.5%;
+    text-align: center;
+    width: 24%;
+}
+.productCard img{
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+}
+.seeMore, .addToCart{
+    background-color: #f44336;
+    margin-bottom: 20px;
+}
+.addToCart:hover, .seeMore:hover{
+    background-color: #f4433691;
+}
+.addToCart:focus{
+    background-color: blue;
+}
+.linkCo{
+    visibility: hidden;
+}
+
+/* .seeMore{
+    visibility: hidden;
+} */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
 
 /* ~~~~~~~~~~~~~    END PRODUCT PAGE     ~~~~~~~~~~~~~~*/
 
