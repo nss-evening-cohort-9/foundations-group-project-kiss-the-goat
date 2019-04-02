@@ -188,7 +188,7 @@ const beerArray = [
       quantity: 1
   }
 ];
-const beerCartArray = [];
+const shoppingCartArray = [];
 
 
 const beerCardBuilder = (arrayToPrint) => {//~~~~~~~~~~~~~~~~~~~~~~~~~~~~CARD BUILDER FUNCTION~~~~//
@@ -242,9 +242,10 @@ const addToCart = (e) =>{//~~~~~~~~~~~~~~~~~~~~ADD TO CART ARRAY PUSH~~~~~~~~~~~
         if(id===`add${beerArray[i].id}`){
             const cartItem = beerArray[i];
             const aId = document.getElementById(`link${beerArray[i].id}`)
-            beerCartArray.unshift(cartItem);
+            shoppingCartArray.push(cartItem);
             idTxt.innerHTML = 'Added!'
             aId.style.visibility='visible';
+            localStorage.setItem('shoppingCartArray', JSON.stringify(shoppingCartArray));
         };
     };
 };
@@ -256,7 +257,7 @@ const addToCartListeners = () => {//~~~~~~~~~~~ADD TO CART LISTENERS~~~~~~~~~~~~
     }
 };
 
-let shoppingCartArray = [
+/*let shoppingCartArray = [
     {
         name: 'Beer-1-name',
         imgUrl: 'https://via.placeholder.com/148',
@@ -288,9 +289,9 @@ let shoppingCartArray = [
         pricePer: 5.99,
         quantity: 5,
     }
-];
+];*/
 
-// const beerInCart = [];
+const beerInCart = JSON.parse(localStorage.getItem('shoppingCartArray'));
 
 
 const printCart = () =>{
@@ -300,15 +301,15 @@ const printCart = () =>{
     } else{
     let domString = '';
     let i = 0
-    shoppingCartArray.forEach((beer)=> {
+    beerInCart.forEach((beer)=> {
         
         if(beer.quantity >= 1){
             domString += `<div class="col-sm-6">`;
             domString += `  <div class="card">`;
             domString += `     <div class="card-body">`;
-            domString += `      <img class='card-img-top' src=${beer.imgUrl}>`;
+            domString += `      <img class='card-img-top' src=${beer.img}>`;
             domString += `      <p class="card-text">${beer.name}</p>`;
-            domString += `      <p class="card-text">$${beer.pricePer} per pack.</p>`;
+            domString += `      <p class="card-text">$${beer.price} per pack.</p>`;
             domString += `      <p class="card-text">Current quantity: ${beer.quantity} packs</p>`;
             domString += `      <a href="#" class="btn btn-primary">Change</a>`;
             domString += `     </div>`;
