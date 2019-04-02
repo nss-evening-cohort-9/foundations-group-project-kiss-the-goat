@@ -112,28 +112,6 @@ const beerCardBuilder = (arrayToPrint) => {
 }};
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
-
-// const printNavBar = () => {
-
-//     let domString = ``;
-//     domString +=
-//     `<nav class="navbar navbar-expand-lg navbar-light bg-light">
-//         <a class="navbar-brand" href="#">Navbar</a>
-//         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-//             <span class="navbar-toggler-icon"></span>
-//         </button>
-//         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-//             <div class="navbar-nav">
-//                 <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-//                 <a class="nav-item nav-link" href="#">Features</a>
-//                 <a class="nav-item nav-link" href="#">Pricing</a>
-//                 <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-//             </div>
-//         </div>
-//     </nav>`
-//     printToDom('navBar', domString);
-// };
-
 const printMap = () => {
     const mapContainer = document.getElementById('mapContainer');
     if(mapContainer === null){
@@ -221,9 +199,15 @@ const printCart = () =>{
 const subscribeEmail = [];
 
 const newSubscriber = () => {
-    let newDrinker = {
+    let indexPage = document.getElementById('indexPage');
+    if(indexPage === null){//page conditional
+        return;
+    }
+    else {
+        let newDrinker = {
         fullName: document.getElementById('fullnameSubscribe').value,
         email: document.getElementById('exampleInputEmail1').value,
+        }
     }
     //validation - bootstrap covers most of this
             // let textInput = document.getElementById('fullnameSubscribe').value;
@@ -236,7 +220,46 @@ const newSubscriber = () => {
             // }
     subscribeEmail.push(newDrinker);
 };
-// Event listener:
+
+
+// Event listener: USE consEventListeners When MERGE time comes. copy and paste these events into that function please.
+constEventListeners2 = () => {
+    document.getElementById('').addEventListener('click', modalSubscribe)
+};
+
+
+const modalSubscribe = () => {
+    let indexPage = document.getElementById('indexPage');
+    if(indexPage === null){//page conditional
+        return;
+    }
+    else {
+        let modString = '';
+        modString += `<div class="modal" tabindex="-1" role="dialog">`;
+        modString += `   <div class="modal-dialog" role="document">`;
+        modString += `       <div class="modal-content">`;
+        modString += `           <div class="modal-header">`;
+        modString += `        <h5 class="modal-title">Modal title</h5>`;
+        modString += `    <button type="button" class="close" data-dismiss="modal" aria-label="Close">`;
+        modString += `      <span aria-hidden="true">&times;</span>`;
+        modString += `   </button>`;
+        modString += `  </div>`;
+        modString += `  <div class="modal-body">`;
+        modString += `   <p>Modal body text goes here.</p>`;
+        modString += `  </div>`;
+        modString += `  <div class="modal-footer">`;
+        modString += `    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>`;
+        modString += `    <button type="button" class="btn btn-primary">Save changes</button>`;
+        modString += `  </div>`;
+        modString += `</div>`;
+        modString += `</div>`;
+        modString += `</div>`;
+    }
+    printToDom('subscribeBtn', window);
+
+};
+
+
 // document.getElementById('subscribeBtn').addEventListener('click', newSubscriber())
 
 
@@ -244,11 +267,16 @@ const newSubscriber = () => {
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~ IMAGE CAROUSEL INDEX.HTML ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
 const imagesArray = ['./imgs/1.jpg', './imgs/2.jpg', './imgs/3.jpg', './imgs/4.jpg', './imgs/6.jpg', './imgs/6.jpg', './imgs/7.jpg', './imgs/8.jpg', './imgs/9.jpg', './imgs/10.jpg'];
-let time = 3500;
+let time = 5000;
 // let i = 0;
 
 // THIS ONE WORKS BEST !!!!!!
 const changeImg = () => {
+    let indexPage = document.getElementById('indexPage');
+    if(indexPage === null){//page conditional
+        return;
+    }
+    else {
     let imgString = ''; 
     imagesArray.forEach((image, i) => {
         setTimeout(() => {
@@ -256,8 +284,9 @@ const changeImg = () => {
             console.log(image);
             printToDom('carouselLoop', imgString);
         }, time * i);
-        return;
+        
     });
+};
 };
 
 
@@ -294,13 +323,11 @@ const changeImg = () => {
 
 
 // ~~~~~~~~~~~~~~~~~~~~ BEER CART ~~~~~~~~~~~~~~~~~~~~
-// beerInCart.push(document.getElementById().value);
 
 
 
 const init = () =>{
-    printCart();
-    // printNavBar();
+    // printCart();
     printMap();
     beerCardBuilder(beerArray);
     changeImg();
