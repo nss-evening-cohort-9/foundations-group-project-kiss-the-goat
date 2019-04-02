@@ -1,3 +1,10 @@
+//printToDom function
+const printToDom = (divId, textToPrint) => {
+    const selectedDiv = document.getElementById(divId);
+    selectedDiv.innerHTML = textToPrint;
+  };
+
+//Brewer list
 const brewers = [
     {
         name: 'Emily DeWitt',
@@ -24,11 +31,6 @@ const brewers = [
         favoriteBeers: ['Chicken Scratch', 'Peanut Butter Milk Stout', 'Jackalope'],
     },
 ];
-//Standard printToDom function everyone uses
-const printToDom = (divId, textToPrint) => {
-    const selectedDiv = document.getElementById(divId);
-    selectedDiv.innerHTML = textToPrint;
-  };
 
 //This function prints the map showing the location of the brewery to the DOM of the Taproom page
 const printMap = () => {
@@ -60,6 +62,11 @@ const printContactInfo = () => {
 
         printToDom('contactInfoContainer', domString)
     }
+};
+
+//This causes an alert to appear when someone clicks the 'Schedule a Tour' button on the Taproom page
+const scheduleAlert = () => {
+    alert("Your request to schedule a brewery tour has been received. We'll be in touch shortly!");
 };
 
 //This function prints 'Meet Our Brewers' above the photos of brewers on the taproom page
@@ -98,17 +105,190 @@ const printBrewerPhotos = () => {
     }
 };
 
-//This causes an alert to appear when someone clicks the 'Schedule a Tour' button on the Taproom page
-const scheduleAlert = () => {
-    alert("Your request to schedule a brewery tour has been received. We'll be in touch shortly!");
+//BEER OBJECT LIST 
+const beerArray = [
+    {
+        name: 'beer 1',
+        img: 'https://picsum.photos/200/300/?random',
+        abv: '4.8%',
+        description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
+        price: 9.99,
+        ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4']
+    },
+    {
+      name: 'beer 2',
+      img: 'https://picsum.photos/200/300/?random',
+      abv: '12%',
+      description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
+      price: 15.99,
+      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4']
+  },
+  {
+      name: 'beer 3',
+      img: 'https://picsum.photos/200/300/?random',
+      abv: '9%',
+      description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
+      price: 7.99,
+      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4']
+  },
+  {
+      name: 'beer 4',
+      img: 'https://picsum.photos/200/300/?random',
+      abv: '5%',
+      description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
+      price: 13.99,
+      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4']
+  },
+  {
+      name: 'beer 5',
+      img: 'https://picsum.photos/200/300/?random',
+      abv: '10%',
+      description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
+      price: 16.99,
+      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4']
+  },
+  {
+      name: 'beer 6',
+      img: 'https://picsum.photos/200/300/?random',
+      abv: '7%',
+      description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
+      price: 24.99,
+      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4']
+  },
+  {
+      name: 'beer 7',
+      img: 'https://picsum.photos/200/300/?random',
+      abv: '18%',
+      description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
+      price: 29.99,
+      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4']
+  },
+  {
+      name: 'beer 8',
+      img: 'https://picsum.photos/200/300/?random',
+      abv: '10%',
+      description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
+      price: 12.99,
+      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4']
+  }
+];
+
+//~~~~~~~~~~     PRODUCT PAGE: CARD PRINTER     ~~~~~~~~~~//
+const beerCardBuilder = (arrayToPrint) => {
+    const productPage = document.getElementById('productCon');
+    if(productPage === null) {//page conditional
+        return;
+    }
+    else {
+        let stringToPrint = '';
+        let ingList = '';
+    arrayToPrint.forEach((beer) =>{
+        for(let i=0; i<beer.ing.length; i++){
+            ingList += ` <li class="list-group-item">${beer.ing[i]}</li>`;
+        };
+        stringToPrint += 
+        `<div class="card productCard col-3">
+            <img class="card-img-top" src="${beer.img}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">${beer.name}</h5>
+                <p class="card-text">${beer.description}</p>
+                <br>
+                <p>ABV: ${beer.abv}</p>
+                <br>
+                <p>Price: $${beer.price}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <h6>Ingredients</h6>
+                ${ingList}
+            </ul>
+        </div>`;
+        ingList=``;
+    })
+        // BUTTONS FOR FUTURE FEATURES
+    //     <div class="card-body">
+    //     <a href="#" class="card-link">Card link</a>
+    //     <a href="#" class="card-link">Another link</a>
+    //   </div>
+    printToDom('productCon', stringToPrint);
+}};
+
+let shoppingCartArray = [
+    {
+        name: 'Beer-1-name',
+        imgUrl: 'https://via.placeholder.com/148',
+        pricePer: 1.99,
+        quantity: 1,
+
+    },
+    {
+        name: 'Beer-2-name',
+        imgUrl: 'https://via.placeholder.com/148',
+        pricePer: 2.99,
+        quantity: 2,
+    },
+    {
+        name: 'Beer-3-name',
+        imgUrl: 'https://via.placeholder.com/148',
+        pricePer: 3.99,
+        quantity: 3,
+    },
+    {
+        name: 'Beer-4-name',
+        imgUrl: 'https://via.placeholder.com/148',
+        pricePer: 4.99,
+        quantity: 4,
+    },
+    {
+        name: 'Beer-5-name',
+        imgUrl: 'https://via.placeholder.com/148',
+        pricePer: 5.99,
+        quantity: 5,
+    }
+];
+
+// const beerInCart = [];
+
+const printCart = () => {
+    let domString = '';
+    let i = 0;
+    if(document.body.id === 'checkoutPage') {
+    shoppingCartArray.forEach((beer)=> {
+        
+        if(beer.quantity >= 1){
+            domString += `<div class="col-sm-6">`;
+            domString += `  <div class="card">`;
+            domString += `     <div class="card-body">`;
+            domString += `      <img class='card-img-top' src=${beer.imgUrl}>`;
+            domString += `      <p class="card-text">${beer.name}</p>`;
+            domString += `      <p class="card-text">$${beer.pricePer} per pack.</p>`;
+            domString += `      <p class="card-text">Current quantity: ${beer.quantity} packs</p>`;
+            domString += `      <a href="#" class="btn btn-primary">Change</a>`;
+            domString += `     </div>`;
+            domString += `      <form>`;
+            domString += `          <div class="form-group">`;
+            domString += `              <label for="${beer.name}">Change quantity</label>`;
+            domString += `              <input type="text" class="form-control" id='${i}' value='${beer.quantity}'>`;
+            domString += `          </div>`;
+            domString += `      </form>`;
+            domString += `  </div>`;
+            domString += `</div>`;
+        };
+        i++
+    });
+    printToDom('checkout-card-container', domString);
+    } else {
+        return;
+    };
 };
 
 const eventListeners = () => {
     document.getElementById('scheduleTour').addEventListener('click', scheduleAlert);
-}
+};
 
-const init = () => {
+const init = () =>{
+    printCart();
     printMap();
+    beerCardBuilder(beerArray);
     printContactInfo();
     printBrewerTitle();
     printBrewerPhotos();

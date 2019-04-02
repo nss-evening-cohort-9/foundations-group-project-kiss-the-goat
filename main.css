@@ -1,22 +1,71 @@
 * {
-    font-family: Arial, Helvetica, sans-serif;
+    margin: 0, 10px, 0, 10px;
 }
 
 body {
-    background-color: lightgrey;    
+    background-color: white;
+    font-family: 'Pathway Gothic One', sans-serif;
+    letter-spacing: .8px;
+}
+ 
+/* NAVBAR STYLING */
+
+#topNav {
+    background-color: #f44336;
+
+}
+
+/* ~~~~~~~~~~~~~    PRODUCT PAGE     ~~~~~~~~~~~~~~*/
+.productCon {
+    display: flex;
+    flex-flow: row wrap;
+    width: 50%;
+    margin: 0 auto;
+}
+/* ~~~~~~~~~~~~~    ------------     ~~~~~~~~~~~~~~*/
+
+.navbar-brand, .nav-item {
+    color: rgb(235, 235, 235);
+    font-size: 1.5em; 
+    padding: 4px;
+}
+
+.navbar-toggler, .navbar-toggler-icon {
+    border-color: white;
+}
+
+.navbar-brand {
+    border: 1px solid white;
+    border-radius: 6px;
+    text-align: center;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+}
+
+.navbar-brand:hover, .nav-item:hover {
+    color: white;
+    transform: scale(1.1);
+    transition: 1.4s;   
+}
+
+.beerSpan {
+    text-transform: uppercase;
+    color: white;
+}
+
+.navbar-nav {
+    float: right;
 }
 
 #mapAndContactContainer {
     display: flex;
     margin: 15px;
     background-color: rgb(143, 27, 27);
-    /* border: 2px pink solid; */
 }
 
 #mapContainer {
     flex: 0 0 450px;
     margin: 15px 0px 10px 15px;
-    /* border: 2px purple solid; */
 }
 
 #contactInfoContainer {
@@ -26,8 +75,6 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    /* border: 2px green solid; */
-
 }
 
 #scheduleTour {
