@@ -234,7 +234,7 @@ const changeImg = () => {
             console.log(image);
             printToDom('carouselLoop', imgString);
         }, time * i);
-        return i;
+        return;
     });
 };
 
