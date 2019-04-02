@@ -222,7 +222,7 @@ body {
 #mapAndContactContainer {
     display: flex;
     margin: 15px;
-    background-color: rgb(143, 27, 27);
+    background-color: #53a7ea;
 }
 
 #mapContainer {
@@ -262,6 +262,7 @@ body {
 #brewerTitleContainer {
     justify-content: center;
     text-align: center;
+    color: white;
 }
 
 #meetTheBrewersTitle {
