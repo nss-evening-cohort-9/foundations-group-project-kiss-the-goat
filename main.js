@@ -55,7 +55,7 @@ const printContactInfo = () => {
         domString +=    `<p>500 Interstate Blvd South</p>`;
         domString +=    `<p>Nashville, Tennessee 37210</p>`;
         domString +=    `<p>Phone: (615) 736-0000</p>`;
-        domString +=    `<button id="scheduleTour">Click here to schedule a tour</button>`
+        domString +=    `<button class="btn" id="scheduleTour">Click here to schedule a tour</button>`
         domString += `</div>`
 
         printToDom('contactInfoContainer', domString)
@@ -95,6 +95,7 @@ const printBrewerPhotos = () => {
         domString +=  `</div>`; //END CARD
         printToDom('brewerCardContainer', domString);
       });
+    }
 };
 
 //This causes an alert to appear when someone clicks the 'Schedule a Tour' button on the Taproom page
