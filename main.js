@@ -228,36 +228,36 @@ constEventListeners2 = () => {
 };
 
 
-const modalSubscribe = () => {
-    let indexPage = document.getElementById('indexPage');
-    if(indexPage === null){//page conditional
-        return;
-    }
-    else {
-        let modString = '';
-        modString += `<div class="modal" tabindex="-1" role="dialog">`;
-        modString += `   <div class="modal-dialog" role="document">`;
-        modString += `       <div class="modal-content">`;
-        modString += `           <div class="modal-header">`;
-        modString += `        <h5 class="modal-title">Modal title</h5>`;
-        modString += `    <button type="button" class="close" data-dismiss="modal" aria-label="Close">`;
-        modString += `      <span aria-hidden="true">&times;</span>`;
-        modString += `   </button>`;
-        modString += `  </div>`;
-        modString += `  <div class="modal-body">`;
-        modString += `   <p>Modal body text goes here.</p>`;
-        modString += `  </div>`;
-        modString += `  <div class="modal-footer">`;
-        modString += `    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>`;
-        modString += `    <button type="button" class="btn btn-primary">Save changes</button>`;
-        modString += `  </div>`;
-        modString += `</div>`;
-        modString += `</div>`;
-        modString += `</div>`;
-    }
-    printToDom('subscribeBtn', window);
+// const modalSubscribe = () => {
+//     let indexPage = document.getElementById('indexPage');
+//     if(indexPage === null){//page conditional
+//         return;
+//     }
+//     else {
+//         let modString = '';
+//         modString += `<div class="modal" tabindex="-1" role="dialog">`;
+//         modString += `   <div class="modal-dialog" role="document">`;
+//         modString += `       <div class="modal-content">`;
+//         modString += `           <div class="modal-header">`;
+//         modString += `        <h5 class="modal-title">Modal title</h5>`;
+//         modString += `    <button type="button" class="close" data-dismiss="modal" aria-label="Close">`;
+//         modString += `      <span aria-hidden="true">&times;</span>`;
+//         modString += `   </button>`;
+//         modString += `  </div>`;
+//         modString += `  <div class="modal-body">`;
+//         modString += `   <p>Modal body text goes here.</p>`;
+//         modString += `  </div>`;
+//         modString += `  <div class="modal-footer">`;
+//         modString += `    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>`;
+//         modString += `    <button type="button" class="btn btn-primary">Save changes</button>`;
+//         modString += `  </div>`;
+//         modString += `</div>`;
+//         modString += `</div>`;
+//         modString += `</div>`;
+//     }
+//     printToDom(, modString);
 
-};
+// };
 
 
 // document.getElementById('subscribeBtn').addEventListener('click', newSubscriber())
