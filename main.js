@@ -1,3 +1,10 @@
+const subscribeEmail = [];
+const imagesArray = ['./imgs/1.jpg', './imgs/2.jpg', './imgs/3.jpg', './imgs/4.jpg', './imgs/6.jpg', './imgs/6.jpg', './imgs/7.jpg', './imgs/8.jpg', './imgs/9.jpg', './imgs/10.jpg'];
+let time = 5000;
+
+
+
+
 //printToDom function
 const printToDom = (divId, textToPrint) => {
     const selectedDiv = document.getElementById(divId);
@@ -257,6 +264,18 @@ const addToCartListeners = () => {//~~~~~~~~~~~ADD TO CART LISTENERS~~~~~~~~~~~~
     }
 }
 
+// Josh - tyring to get cart counter working on index
+// const addToCartListeners = () => {//~~~~~~~~~~~ADD TO CART LISTENERS~~~~~~~~~~~~~//
+//     for(i=0; i<beerArray.length; i++){
+//         const btnId= document.getElementById(`add${beerArray[i].id}`);
+//         cosnt cartCounter = document.getElementById('cartCounter')
+//         btnId.addEventListener('click', addToCart);
+//     }
+{/* <span class="sr-only">unread messages</span> */}
+
+// }
+
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
 
@@ -332,37 +351,10 @@ const printCart = () =>{
 };
     
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~ INDEX EMAIL SUBSCRIBE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
-const subscribeEmail = [];
-
-const newSubscriber = () => {
-    let indexPage = document.getElementById('indexPage');
-    if(indexPage === null){//page conditional
-        return;
-    }
-    else {
-        let newDrinker = {
-        fullName: document.getElementById('fullnameSubscribe').value,
-        email: document.getElementById('exampleInputEmail1').value,
-        }
-    }
-    //validation - bootstrap covers most of this
-            // let textInput = document.getElementById('fullnameSubscribe').value;
-            // let textInput2 = document.getElementById('exampleInputEmail1').value;
-            // if (textInput.value !== null && textInput === "") {
-            //     alert('Please enter a first and last name');
-            // } else if (textInput2.value !== null && textInput2 === "") {
-            //     alert('You must enter a valid email address')
-            // } else {
-            // }
-    subscribeEmail.push(newDrinker);
-};
 
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~ IMAGE CAROUSEL INDEX.HTML ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
-const imagesArray = ['./imgs/1.jpg', './imgs/2.jpg', './imgs/3.jpg', './imgs/4.jpg', './imgs/6.jpg', './imgs/6.jpg', './imgs/7.jpg', './imgs/8.jpg', './imgs/9.jpg', './imgs/10.jpg'];
-let time = 5000;
 // let i = 0;
 
 // THIS ONE WORKS BEST !!!!!!
@@ -383,8 +375,6 @@ const changeImg = () => {
         });
     };
 };
-
-
 
 // Old for loop BUT works
 // const changeImg = () => {
@@ -420,10 +410,21 @@ const changeImg = () => {
 
 // ~~~~~~~~~~~~~~~~~~~~ BEER CART ~~~~~~~~~~~~~~~~~~~~
 
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~ INDEX EMAIL SUBSCRIBE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 const subscribeFunction = (e) => {
+    let indexPage = document.getElementById('indexPage');
+    if(indexPage === null){//page conditional
+        return;
+    }
+    else {
     e.preventDefault();
-    alert('Congrats! You are about to receive another )
-  })
+    let newDrinker = {
+        fullName: document.getElementById('fullnameSubscribe').value,
+        email: document.getElementById('exampleInputEmail1').value,
+        }
+    subscribeEmail.push(newDrinker);
+    }
 };
 
 const eventListeners = () => {
