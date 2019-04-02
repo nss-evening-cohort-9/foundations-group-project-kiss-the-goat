@@ -213,9 +213,7 @@ const printCart = () =>{
         i++
     });
     printToDom('checkout-card-container', domString);
-    } else {
-        return;
-    };
+    
 };
 
 beerInCart.push(document.getElementById().value);
