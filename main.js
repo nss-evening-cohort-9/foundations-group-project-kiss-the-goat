@@ -1,3 +1,110 @@
+//printToDom function
+const printToDom = (divId, textToPrint) => {
+    const selectedDiv = document.getElementById(divId);
+    selectedDiv.innerHTML = textToPrint;
+  };
+
+//Brewer list
+const brewers = [
+    {
+        name: 'Emily DeWitt',
+        photo: `http://www.ieeeaustsb.org/files/2017/05/placeholder-male-square.png`,
+        hometown: `Hartwell, Georgia`,
+        favoriteBeers: ['Wiseacre Tiny Bomb', 'Red Stripe', 'Tecate'],
+    },
+    {
+        name: 'Josh Pantana',
+        photo: `http://www.ieeeaustsb.org/files/2017/05/placeholder-male-square.png`,
+        hometown: `Atlanta, Georgia`,
+        favoriteBeers: ['Miller Lite', 'Old Speckled Hen', 'Dos Equis'],
+    },
+    {
+        name: 'Keith Walker',
+        photo: `http://www.ieeeaustsb.org/files/2017/05/placeholder-male-square.png`,
+        hometown: `Chicago, Illinois`,
+        favoriteBeers: ['Fullers ESB', 'Budweiser', 'Newcastle Brown Ale'],
+    },
+    {
+        name: 'Austin Casey',
+        photo: `http://www.ieeeaustsb.org/files/2017/05/placeholder-male-square.png`,
+        hometown: `Nashville, Tennessee`,
+        favoriteBeers: ['Chicken Scratch', 'Peanut Butter Milk Stout', 'Jackalope'],
+    },
+];
+
+//This function prints the map showing the location of the brewery to the DOM of the Taproom page
+const printMap = () => {
+    const mapContainer = document.getElementById('mapContainer');
+    if(mapContainer === null){
+        return;
+    } else {
+    let domString = ``;
+    domString += `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3222.393140738528!2d-86.75879268470213!3d36.13263981268999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88646609ffab37eb%3A0x528b2eab4ef5110e!2s500+Interstate+Blvd+S%2C+Nashville%2C+TN+37210!5e0!3m2!1sen!2sus!4v1553963381330!5m2!1sen!2sus" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>`;
+    printToDom('mapContainer', domString);
+    };
+};
+
+//This function prints the address and contact information of the brewery beside the map on the taproom key
+const printContactInfo = () => {
+    const contactInfoContainer = document.getElementById('contactInfoContainer');
+    if (contactInfoContainer === null) {
+        return;
+    } else {
+        let domString = ``;
+        domString += `<div id="contactText">`
+        domString +=    `<h2>Visit our Brewery</h2>`
+        domString +=    `<p>Kiss the Goat Brewery</p>`;
+        domString +=    `<p>500 Interstate Blvd South</p>`;
+        domString +=    `<p>Nashville, Tennessee 37210</p>`;
+        domString +=    `<p>Phone: (615) 736-0000</p>`;
+        domString +=    `<button class="btn" id="scheduleTour">Click here to schedule a tour</button>`
+        domString += `</div>`
+
+        printToDom('contactInfoContainer', domString)
+    }
+};
+
+//This causes an alert to appear when someone clicks the 'Schedule a Tour' button on the Taproom page
+const scheduleAlert = () => {
+    alert("Your request to schedule a brewery tour has been received. We'll be in touch shortly!");
+};
+
+//This function prints 'Meet Our Brewers' above the photos of brewers on the taproom page
+const printBrewerTitle = () => {
+    const brewerTitleContainer = document.getElementById('brewerTitleContainer');
+    if (brewerTitleContainer === null) {
+        return
+    } else {
+    let domString = ``;
+    domString += `<h2 id="meetTheBrewersTitle">Meet our Brewers</h2>`;
+    printToDom('brewerTitleContainer', domString);
+    }
+};
+
+//this function prints the photos of the brewers on the Taproom page
+const printBrewerPhotos = () => {
+    const brewerCardContainer = document.getElementById('brewerCardContainer');
+    if (brewerCardContainer === null) {
+        return
+    } else {
+    let domString = ``;
+    domString += '<div class="row">';
+    brewers.forEach((brewer) => {
+        domString += `<div class="card text-center col-6 brewerCard">`; //CARD
+        domString +=   `<div class="brewerPhotoAndDescriptionWrap">`; //PHOTO AND DESCRIPTION WRAP
+        domString +=     `<img class="brewerPhotoWrap" src="${brewer.photo}">`; //BREWER PHOTO
+        domString +=     `<div class="brewerDescriptionWrap">`; //DESCRIPTION WRAP
+        domString +=       `<h4>${brewer.name}</h4>`;
+        domString +=       `<h5>Hometown: ${brewer.hometown}</h5>`;
+        domString +=       `<h5>Favorite beers: ${brewer.favoriteBeers}</h5>`;
+        domString +=     `</div>`; //END DESCRIPTION WRAP
+        domString +=   `</div>` //END PHOTO AND DESCRIPTION WRAP
+        domString +=  `</div>`; //END CARD
+        printToDom('brewerCardContainer', domString);
+      });
+    }
+};
+
 //BEER OBJECT LIST 
 const beerArray = [
     {
@@ -84,20 +191,12 @@ const beerArray = [
 const beerCartArray = [];
 
 
-const printToDom = (divId, textToPrint) => {
-    const selectedDiv = document.getElementById(divId);
-    selectedDiv.innerHTML = textToPrint;
-  };
-
-//~~~~~~~~~~     PRODUCT PAGE    ~~~~~~~~~~//
-
-
 const beerCardBuilder = (arrayToPrint) => {//~~~~~~~~~~~~~~~~~~~~~~~~~~~~CARD BUILDER FUNCTION~~~~//
     const productPage = document.getElementById('productCon');
-    if(productPage === null){//page conditional
+    if(productPage === null) {//page conditional
         return;
     }
-    else{
+    else {
         let stringToPrint = '';
         let ingList = '';
     arrayToPrint.forEach((beer) =>{
@@ -150,6 +249,7 @@ const addToCart = (e) =>{//~~~~~~~~~~~~~~~~~~~~ADD TO CART ARRAY PUSH~~~~~~~~~~~
         };
     };
 };
+
 const addToCartListeners = () => {//~~~~~~~~~~~ADD TO CART LISTENERS~~~~~~~~~~~~~//
     for(i=0; i<beerArray.length; i++){
         const btnId= document.getElementById(`add${beerArray[i].id}`);
@@ -159,17 +259,6 @@ const addToCartListeners = () => {//~~~~~~~~~~~ADD TO CART LISTENERS~~~~~~~~~~~~
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
-
-const printMap = () => {
-    const mapContainer = document.getElementById('mapContainer');
-    if(mapContainer === null){
-        return;
-    } else{
-    let domString = ``;
-    domString += `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3222.393140738528!2d-86.75879268470213!3d36.13263981268999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88646609ffab37eb%3A0x528b2eab4ef5110e!2s500+Interstate+Blvd+S%2C+Nashville%2C+TN+37210!5e0!3m2!1sen!2sus!4v1553963381330!5m2!1sen!2sus" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>`;
-    printToDom('mapContainer', domString);
-    };
-};
 
 let shoppingCartArray = [
     {
@@ -205,7 +294,8 @@ let shoppingCartArray = [
     }
 ];
 
-const beerInCart = [];
+// const beerInCart = [];
+
 
 const printCart = () =>{
     const checkoutPage = document.getElementById('checkout-card-container');
@@ -242,7 +332,6 @@ const printCart = () =>{
 };
     
 
-
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~ INDEX EMAIL SUBSCRIBE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 const subscribeEmail = [];
 
@@ -270,20 +359,6 @@ const newSubscriber = () => {
 };
 
 
-// Event listener: USE consEventListeners When MERGE time comes. copy and paste these events into that function please.
-const EventListeners2 = () => {
-    const subscribeFunction = (e) => {
-        e.preventDefault();
-        $('#myModal').on('shown.bs.modal', function () {
-        $('#myInput').trigger('focus')
-      })
-    };
-    
-    document.getElementById('subscribeBtn').addEventListener('click', subscribeFunction);
-};
-
-
-
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~ IMAGE CAROUSEL INDEX.HTML ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
 const imagesArray = ['./imgs/1.jpg', './imgs/2.jpg', './imgs/3.jpg', './imgs/4.jpg', './imgs/6.jpg', './imgs/6.jpg', './imgs/7.jpg', './imgs/8.jpg', './imgs/9.jpg', './imgs/10.jpg'];
@@ -305,9 +380,10 @@ const changeImg = () => {
             printToDom('carouselLoop', imgString);
         }, time * i);
         
-    });
+        });
+    };
 };
-};
+
 
 
 // Old for loop BUT works
@@ -344,11 +420,27 @@ const changeImg = () => {
 
 // ~~~~~~~~~~~~~~~~~~~~ BEER CART ~~~~~~~~~~~~~~~~~~~~
 
+const subscribeFunction = (e) => {
+    e.preventDefault();
+    alert('Congrats! You are about to receive another )
+  })
+};
+
+const eventListeners = () => {
+    // document.getElementById('scheduleTour').addEventListener('click', scheduleAlert);
+    document.getElementById('subscribeBtn').addEventListener('click', subscribeFunction);
+};
+
+
 const init = () =>{
     // printCart();
     printMap();
     beerCardBuilder(beerArray);
+    printContactInfo();
+    printBrewerTitle();
+    printBrewerPhotos();
+    eventListeners();
     changeImg();
-    EventListeners2();
 };
+
 init();
