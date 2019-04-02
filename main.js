@@ -145,48 +145,49 @@ const printMap = () => {
     };
 };
 
-const shoppingCartArray = [
+let shoppingCartArray = [
     {
-        name: 'Beer 1 name',
+        name: 'Beer-1-name',
         imgUrl: 'https://via.placeholder.com/148',
         pricePer: 1.99,
         quantity: 1,
 
     },
     {
-        name: 'Beer 2 name',
+        name: 'Beer-2-name',
         imgUrl: 'https://via.placeholder.com/148',
         pricePer: 2.99,
         quantity: 2,
     },
     {
-        name: 'Beer 3 name',
+        name: 'Beer-3-name',
         imgUrl: 'https://via.placeholder.com/148',
         pricePer: 3.99,
         quantity: 3,
     },
     {
-        name: 'Beer 4 name',
+        name: 'Beer-4-name',
         imgUrl: 'https://via.placeholder.com/148',
         pricePer: 4.99,
         quantity: 4,
     },
     {
-        name: 'Beer 5 name',
+        name: 'Beer-5-name',
         imgUrl: 'https://via.placeholder.com/148',
         pricePer: 5.99,
         quantity: 5,
     }
 ];
 
+const beerInCart = [];
+
 const printCart = () =>{
-    const checkoutPage = document.getElementById('checkout-card-container');
-    if(checkoutPage===null){
-        return
-    } else{
     let domString = '';
+    let i = 0
+    if(document.body.id === 'checkoutPage'){
     shoppingCartArray.forEach((beer)=> {
-        //if(beer.quantity >= 1){
+        
+        if(beer.quantity >= 1){
             domString += `<div class="col-sm-6">`;
             domString += `  <div class="card">`;
             domString += `     <div class="card-body">`;
@@ -196,14 +197,29 @@ const printCart = () =>{
             domString += `      <p class="card-text">Current quantity: ${beer.quantity} packs</p>`;
             domString += `      <a href="#" class="btn btn-primary">Change</a>`;
             domString += `     </div>`;
+            domString += `      <form>`;
+            domString += `          <div class="form-group">`;
+            domString += `              <label for="${beer.name}">Change quantity</label>`;
+            domString += `              <input type="text" class="form-control" id='${i}' value='${beer.quantity}'>`;
+            domString += `          </div>`;
+            domString += `      </form>`;
             domString += `  </div>`;
             domString += `</div>`;
+            
+            
+            
+            //shoppingCartArray[i].quantity = document.getElementById(`${i}Beer`).value
           
-        //};
+        };
+        i++
     });
     printToDom('checkout-card-container', domString);
-}
+    } else {
+        return;
+    };
 };
+
+beerInCart.push(document.getElementById().value);
 
 const init = () =>{
     printCart();
