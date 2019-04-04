@@ -66,7 +66,12 @@ const printContactInfo = () => {
 
 //This causes an alert to appear when someone clicks the 'Schedule a Tour' button on the Taproom page
 const scheduleAlert = () => {
+    const scheduleTour = document.getElementById('scheduleTour');
+    if (scheduleTour === null) {
+        return;
+    } else {
     alert("Your request to schedule a brewery tour has been received. We'll be in touch shortly!");
+    }
 };
 
 //This function prints 'Meet Our Brewers' above the photos of brewers on the taproom page
@@ -110,7 +115,7 @@ const beerArray = [
     {
         name: 'beer 1',
         id: 'beer1',
-        img: 'https://picsum.photos/200/300/?random',
+        img: 'https://picsum.photos/400/400/?random',
         abv: '4.8%',
         description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
         price: 9.99,
@@ -120,7 +125,7 @@ const beerArray = [
     {
       name: 'beer 2',
       id: 'beer2',
-      img: 'https://picsum.photos/200/300/?random',
+      img: 'https://picsum.photos/400/400/?random',
       abv: '12%',
       description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
       price: 15.99,
@@ -130,7 +135,7 @@ const beerArray = [
   {
       name: 'beer 3',
       id: 'beer3',
-      img: 'https://picsum.photos/200/300/?random',
+      img: 'https://picsum.photos/400/400/?random',
       abv: '9%',
       description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
       price: 7.99,
@@ -140,7 +145,7 @@ const beerArray = [
   {
       name: 'beer 4',
       id: 'beer4',
-      img: 'https://picsum.photos/200/300/?random',
+      img: 'https://picsum.photos/400/400/?random',
       abv: '5%',
       description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
       price: 13.99,
@@ -150,7 +155,7 @@ const beerArray = [
   {
       name: 'beer 5',
       id: 'beer5',
-      img: 'https://picsum.photos/200/300/?random',
+      img: 'https://picsum.photos/400/400/?random',
       abv: '10%',
       description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
       price: 16.99,
@@ -160,7 +165,7 @@ const beerArray = [
   {
       name: 'beer 6',
       id: 'beer6',
-      img: 'https://picsum.photos/200/300/?random',
+      img: 'https://picsum.photos/400/400/?random',
       abv: '7%',
       description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
       price: 24.99,
@@ -170,7 +175,7 @@ const beerArray = [
   {
       name: 'beer 7',
       id: 'beer7',
-      img: 'https://picsum.photos/200/300/?random',
+      img: 'https://picsum.photos/400/400/?random',
       abv: '18%',
       description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
       price: 29.99,
@@ -180,7 +185,7 @@ const beerArray = [
   {
       name: 'beer 8',
       id: 'beer8',
-      img: 'https://picsum.photos/200/300/?random',
+      img: 'https://picsum.photos/400/400/?random',
       abv: '10%',
       description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
       price: 12.99,
@@ -201,29 +206,29 @@ const beerCardBuilder = (arrayToPrint) => {//~~~~~~~~~~~~~~~~~~~~~~~~~~~~CARD BU
         let ingList = '';
     arrayToPrint.forEach((beer) =>{
         for(let i=0; i<beer.ing.length; i++){
-            ingList += ` <li class="list-group-item">${beer.ing[i]}</li>`;
+            ingList += ` ${beer.ing[i]} / `;
         };
         stringToPrint += 
-        `<div class="card productCard col-2">
+        `<div class="card productCard">
             <img class="card-img-top" src="${beer.img}" alt="Card image cap">
-            <div class="card-body">
+            <div class="card-body productCardBody">
                 <h5 class="card-title">${beer.name}</h5>
                 <p class="card-text">${beer.description}</p>
-                <br>
-                <p>ABV: ${beer.abv}</p>
-                <br>
-                <p>Price: $${beer.price}</p>
-                    <button class="btn btn-primary seeMore" type="button" data-toggle="collapse" data-target="#seeMore${beer.id}" aria-expanded="false" aria-controls="collapseExample">
-                        See More
-                    </button>
-                    <button class="btn btn-primary addToCart" type="button" id="add${beer.id}">
-                        Add To Cart
-                    </button>
-                    <a href="./checkoutPage.html" class="linkCo link${beer.id}" id="link${beer.id}">Checkout Here!</a>
+                <button class="btn addToCart productBtn" type="button" id="add${beer.id}">
+                    Add To Cart
+                </button>
+                    <br>
+                <button class="btn seeMore productBtn" type="button" data-toggle="collapse" data-target="#seeMore${beer.id}">
+                    See More
+                </button>
+                <a href="./checkoutPage.html" class="linkCo link${beer.id}" id="link${beer.id}">Checkout Here!</a>
                 <div class="collapse" id="seeMore${beer.id}">
                     <ul class="list-group list-group-flush">
-                    <h6>Ingredients</h6>
-                    ${ingList}
+                        <li class="list-group-item">ABV: ${beer.abv}</li>
+                        <li class="list-group-item">Price: $${beer.price}</li>
+                            <br>
+                        <p>Ingredients:</p>
+                        <p class="ingList">${ingList}</p>
                     </ul>
                 </div>
             </div>
@@ -241,9 +246,9 @@ const addToCart = (e) =>{//~~~~~~~~~~~~~~~~~~~~ADD TO CART ARRAY PUSH~~~~~~~~~~~
     for(i=0;i<beerArray.length; i++){
         if(id===`add${beerArray[i].id}`){
             const cartItem = beerArray[i];
-            const aId = document.getElementById(`link${beerArray[i].id}`)
+            const aId = document.getElementById(`link${beerArray[i].id}`);
             beerCartArray.push(shoppingCartArray);
-            idTxt.innerHTML = 'Added!'
+            idTxt.innerHTML = 'Added!';
             aId.style.visibility='visible';
         };
     };
