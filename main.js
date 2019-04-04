@@ -255,26 +255,29 @@ const addToCart = (e) =>{//~~~~~~~~~~~~~~~~~~~~ADD TO CART ARRAY PUSH~~~~~~~~~~~
             aId.style.visibility='visible';
         };
     };
+    cartIconCounter(); // JP line for cart counter
 };
+
 
 const addToCartListeners = () => {//~~~~~~~~~~~ADD TO CART LISTENERS~~~~~~~~~~~~~//
     for(i=0; i<beerArray.length; i++){
         const btnId= document.getElementById(`add${beerArray[i].id}`);
         btnId.addEventListener('click', addToCart);
     }
-}
+};
 
-// Josh - tyring to get cart counter working on index
-// const addToCartListeners = () => {//~~~~~~~~~~~ADD TO CART LISTENERS~~~~~~~~~~~~~//
-//     for(i=0; i<beerArray.length; i++){
-//         const btnId= document.getElementById(`add${beerArray[i].id}`);
-//         cosnt cartCounter = document.getElementById('cartCounter')
-//         btnId.addEventListener('click', addToCart);
-//     }
-{/* <span class="sr-only">unread messages</span> */}
+cartCounter = [];
 
-// }
-
+const cartIconCounter = () => {
+    const cartCounter = beerCartArray.length;
+    let domString = '';
+    if (cartCounter > 0) {
+        domString = `<span id="lblCartCount" class="badge badge-light">${cartCounter}</span>`;
+        printToDom('cartCounter', domString);
+    } else {
+        return;
+    }
+};
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
@@ -354,8 +357,6 @@ const printCart = () =>{
 
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~ IMAGE CAROUSEL INDEX.HTML ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
-
-// let i = 0;
 
 // THIS ONE WORKS BEST !!!!!!
 const changeImg = () => {
