@@ -304,19 +304,19 @@ const printCart = () =>{
     beerInCart.forEach((beer)=> {
         
         if(beer.quantity >= 1){
-            domString += `<div class="col-sm-6">`;
+            domString += `<div class="col-sm-3">`;
             domString += `  <div class="card">`;
             domString += `     <div class="card-body">`;
             domString += `      <img class='card-img-top' src=${beer.img}>`;
             domString += `      <p class="card-text">${beer.name}</p>`;
             domString += `      <p class="card-text">$${beer.price} per pack.</p>`;
-            domString += `      <p class="card-text">Current quantity: ${beer.quantity} packs</p>`;
-            domString += `      <a href="#" class="btn btn-primary">Change</a>`;
+            domString += `      <p class="card-text">Current quantity: ${beer.quantity} pack(s)</p>`;
             domString += `     </div>`;
             domString += `      <form>`;
             domString += `          <div class="form-group">`;
             domString += `              <label for="${beer.name}">Change quantity</label>`;
-            domString += `              <input type="text" class="form-control" id='${i}' value='${beer.quantity}'>`;
+            domString += `              <input type="text" class="form-control w-10" id='${beer.name}form' value=''>`;
+            domString += `      <button type='button' class="changeButton" id='${beer.name}'>Change</button>`;
             domString += `          </div>`;
             domString += `      </form>`;
             domString += `  </div>`;
@@ -325,8 +325,29 @@ const printCart = () =>{
         i++
     });
     printToDom('checkout-card-container', domString);
+    addChangeEvents();
 };
 };
+
+const addChangeEvents = () =>{
+    const changeButtons = document.getElementsByClassName('changeButton');
+    for(let i=0; i<changeButtons.length; i++){
+        changeButtons[i].addEventListener('click', changeQuantity);
+    }
+  };
+
+  const changeQuantity = (e) =>{
+    const buttonId = e.target.id;
+    const quantityFormInput = document.getElementById(`${buttonId}form`).value;
+    beerInCart.forEach((beer, index)=>{
+        if(beer.name === buttonId){
+        beerInCart[index].quantity = quantityFormInput;
+        };
+    });
+    printCart();
+    addChangeEvents();
+};
+
     
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~ INDEX EMAIL SUBSCRIBE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
