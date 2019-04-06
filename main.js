@@ -258,7 +258,7 @@ const beerArray = [
       quantity: 1
   }
 ];
-const beerCartArray = [];
+const shoppingCartArray = [];
 
 
 const beerCardBuilder = (arrayToPrint) => {//~~~~~~~~~~~~~~~~~~~~~~~~~~~~CARD BUILDER FUNCTION~~~~//
@@ -312,14 +312,15 @@ const addToCart = (e) =>{//~~~~~~~~~~~~~~~~~~~~ADD TO CART ARRAY PUSH~~~~~~~~~~~
     for(i=0;i<beerArray.length; i++){
         if(id===`add${beerArray[i].id}`){
             const cartItem = beerArray[i];
-            const aId = document.getElementById(`link${beerArray[i].id}`);
-            beerCartArray.push(shoppingCartArray);
-            idTxt.innerHTML = 'Added!';
+            const aId = document.getElementById(`link${beerArray[i].id}`)
+            shoppingCartArray.push(cartItem);
+            idTxt.innerHTML = 'Added!'
             aId.style.visibility='visible';
+            localStorage.setItem('shoppingCartArray', JSON.stringify(shoppingCartArray));
         };
     };
     // JP DO NOT DELETE
-    localStorage.setItem('beerCartArray2', JSON.stringify(beerCartArray));
+    localStorage.setItem('beerCartArray2', JSON.stringify(shoppingCartArray));
     console.log(JSON.parse(localStorage.getItem("beerCartArray2")));
     cartIconCounter(); // JP line for cart counter
 };
@@ -332,9 +333,15 @@ const addToCartListeners = () => {//~~~~~~~~~~~ADD TO CART LISTENERS~~~~~~~~~~~~
     }
 };
 
+
+
+
 let cartCounter = [];
 
 const cartIconCounter = () => {
+    if (document.getElementById('indexPage') === null) {
+        return;
+    } else {
     console.log('          cart icon counter running');
     let cartCounter = JSON.parse(localStorage.getItem("beerCartArray2"))
 
@@ -346,12 +353,10 @@ const cartIconCounter = () => {
     } else {
         return;
     }
+    }
 };
 
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
-
-
-let shoppingCartArray = [
+/*let shoppingCartArray = [
     {
         name: 'Beer-1-name',
         imgUrl: 'https://via.placeholder.com/148',
@@ -383,44 +388,69 @@ let shoppingCartArray = [
         pricePer: 5.99,
         quantity: 5,
     }
-];
+];*/
 
-// const beerInCart = [];
+const beerInCart = JSON.parse(localStorage.getItem('shoppingCartArray'));
 
 
 const printCart = () =>{
+    let beerTotal = 0;
+    
     const checkoutPage = document.getElementById('checkout-card-container');
     if(checkoutPage===null){
         return;
     } else{
     let domString = '';
-    let i = 0
-    shoppingCartArray.forEach((beer)=> {
+    beerInCart.forEach((beer)=> {
         
         if(beer.quantity >= 1){
-            domString += `<div class="col-sm-6">`;
+            domString += `<div class="col-sm-3">`;
             domString += `  <div class="card">`;
             domString += `     <div class="card-body">`;
-            domString += `      <img class='card-img-top' src=${beer.imgUrl}>`;
+            domString += `      <img class='card-img-top' src=${beer.img}>`;
             domString += `      <p class="card-text">${beer.name}</p>`;
-            domString += `      <p class="card-text">$${beer.pricePer} per pack.</p>`;
-            domString += `      <p class="card-text">Current quantity: ${beer.quantity} packs</p>`;
-            domString += `      <a href="#" class="btn btn-primary">Change</a>`;
+            domString += `      <p class="card-text">$${beer.price} per pack.</p>`;
+            domString += `      <p class="card-text">Current quantity: ${beer.quantity} pack(s)</p>`;
             domString += `     </div>`;
             domString += `      <form>`;
             domString += `          <div class="form-group">`;
             domString += `              <label for="${beer.name}">Change quantity</label>`;
-            domString += `              <input type="text" class="form-control" id='${i}' value='${beer.quantity}'>`;
+            domString += `              <input type="text" class="form-control w-10" id='${beer.name}form' value=''>`;
+            domString += `      <button type='button' class="changeButton" id='${beer.name}'>Change</button>`;
             domString += `          </div>`;
             domString += `      </form>`;
             domString += `  </div>`;
             domString += `</div>`;
+            beerTotal += (Math.round((beer.price * beer.quantity)*100)/100);
         };
-        i++
     });
+    document.getElementById('cart-total').innerHTML = 'Total: $' + beerTotal;
     printToDom('checkout-card-container', domString);
+    addChangeEvents();
+    console.log(beerTotal);
+    document.getElementById('checkout-btn').addEventListener('click', clearStorage);
 };
 };
+
+const addChangeEvents = () =>{
+    const changeButtons = document.getElementsByClassName('changeButton');
+    for(let i=0; i<changeButtons.length; i++){
+        changeButtons[i].addEventListener('click', changeQuantity);
+    }
+  };
+
+  const changeQuantity = (e) =>{
+    const buttonId = e.target.id;
+    const quantityFormInput = document.getElementById(`${buttonId}form`).value;
+    beerInCart.forEach((beer, index)=>{
+        if(beer.name === buttonId){
+        beerInCart[index].quantity = quantityFormInput;
+        };
+    });
+    printCart();
+    addChangeEvents();
+};
+
     
 
 
@@ -475,6 +505,12 @@ const subscribeFunction = (e) => {
     }
 };
 
+const clearStorage = () => {
+   localStorage.removeItem('beerCartArray2');
+   document.getElementById('checkout-card-container').innerHTML = "<image class='img d-flex flex-wrap w-25 h-25' src='https://i.imgur.com/JIFtb2n.jpg'>";
+   alert('Enjoy your hooch :)');
+};
+
 const eventListeners = () => {
     const scheduleTour = document.getElementById('scheduleTour');
     if (scheduleTour === null) {
@@ -488,15 +524,10 @@ const eventListeners = () => {
     };
 };
 
-const clearStorage = () => {
-    localStorage.removeItem('beerCartArray2');
-    window.reload();
-    alert("Enjoy your libations")
-};
-
 
 const init = () =>{
     printMap();
+    printCart();
     beerCardBuilder(beerArray);
     printContactInfo();
     printBrewerTitle();
