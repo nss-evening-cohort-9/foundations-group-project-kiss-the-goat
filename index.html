@@ -42,7 +42,7 @@
 
 
     <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon "></span>
+        <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -51,7 +51,7 @@
         <a class="nav-item nav-link active" href="./index.html">Home <span class="sr-only">(current)</span></a>
         <a class="nav-item nav-link" href="./pages/taproom.html">Taproom</a>
         <a class="nav-item nav-link" href="./pages/productPage.html">The Li<span class="beerSpan">Beer</span>y</a>
-        <a class="nav-item nav-link" href="./pages/checkoutPage.html"><i id="cartCounter" class="fas fa-shopping-cart"></i><div id="cartCounter"></div></a>
+        <a class="nav-item nav-link" href="./pages/checkoutPage.html"><i id="cartCounter" class="fas fa-shopping-cart"></i><div id="cartCounter2"></div></a>
 
         </div>
     </div>
@@ -69,15 +69,15 @@
 </div> 
 
 <div class="container">  <!-- CONTAINER START -->
-
-    <div class="row">
-      <div class="col-6 flex-wrap" id="carouselLoop">
-          <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span> -->
-        <img class="myCarousel" id="slide">
-      </div>
+<div class="col-12 wrapper">
+    <div id="divCardContainer" class="row">
+   
+        <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span> -->
+        <div class="col-6 flex-wrap" id="carouselLoop"></div>
+    
       <!-- form goes here -->
-      <div class="col-4 ml-auto flex-wrap" id="formDiv">
-        <h2 class="h2 text-muted">Subscribe to our letter</h2>
+      <div class="col-4 ml-auto flex-wrap column " id="formDiv">
+        <h2 class="h2 formH2 text-muted">Subscribe to our letter</h2>
         <form>
           <div class="form-group">
             <label class="dark" for="exampleInputEmail1">Email address</label>
@@ -92,11 +92,12 @@
         </form>
       </div>
     </div>
+  </div> 
 </div>  <!-- end container div -->
 
     <!-- ABOUT SECTION -->
-  <div class="col-12 secondContainer container row">
-    <div id="aboutSection">
+  <div class="col-12 secondContainer container flex-wrap row">
+    <div class="flex-wrap" id="aboutSection">
         <h2 id="aboutH2" class="h2 text border-primary">Our Story<span id="elipsis">...</span></h2>
         <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, assumenda. Id, ipsam modi blanditiis aspernatur fuga, eligendi, sunt accusantium natus quam doloribus totam officiis. Amet aliquam magni voluptas ea enim!  </p>
         <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, assumenda. Id, ipsam modi blanditiis aspernatur fuga, eligendi, sunt accusantium natus quam doloribus totam officiis. Amet aliquam magni voluptas ea enim!  </p>
@@ -104,7 +105,7 @@
         <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, assumenda. Id, ipsam modi blanditiis aspernatur fuga, eligendi, sunt accusantium natus quam doloribus totam officiis. Amet aliquam magni voluptas ea enim!  </p>
     </div>
 
-    <div class="col-4" id="eventsDiv">
+    <div class="col-4 flex-wrap" id="eventsDiv">
       <h2 id="eventsH2" class="h2 text border-primary text-center">Upcoming Events and Happenings</h2>
       <div id="upComing">
         <h3>Brewery Tours daily from 11 a.m. through 3:00 p.m.</h3><br>

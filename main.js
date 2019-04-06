@@ -1,5 +1,5 @@
 const subscribeEmail = [];
-const imagesArray = ['./imgs/1.jpg', './imgs/2.jpg', './imgs/3.jpg', './imgs/4.jpg', './imgs/6.jpg', './imgs/6.jpg', './imgs/7.jpg', './imgs/8.jpg', './imgs/9.jpg', './imgs/10.jpg'];
+const imagesArray = ['./imgs/carousel1.jpg', './imgs/carousel2.jpg', './imgs/carousel3.jpg', './imgs/carousel4.jpg', './imgs/carousel6.jpg', './imgs/carousel7.jpg', './imgs/carousel8.jpg', './imgs/carousel9.jpg', './imgs/carousel10.jpg'];
 let time = 5000;
 
 
@@ -255,6 +255,9 @@ const addToCart = (e) =>{//~~~~~~~~~~~~~~~~~~~~ADD TO CART ARRAY PUSH~~~~~~~~~~~
             aId.style.visibility='visible';
         };
     };
+    // JP DO NOT DELETE
+    localStorage.setItem('beerCartArray2', JSON.stringify(beerCartArray));
+    console.log(JSON.parse(localStorage.getItem("beerCartArray2")));
     cartIconCounter(); // JP line for cart counter
 };
 
@@ -266,14 +269,17 @@ const addToCartListeners = () => {//~~~~~~~~~~~ADD TO CART LISTENERS~~~~~~~~~~~~
     }
 };
 
-cartCounter = [];
+let cartCounter = [];
 
 const cartIconCounter = () => {
-    const cartCounter = beerCartArray.length;
+    console.log('          cart icon counter running');
+    let cartCounter = JSON.parse(localStorage.getItem("beerCartArray2"))
+
     let domString = '';
-    if (cartCounter > 0) {
-        domString = `<span id="lblCartCount" class="badge badge-light">${cartCounter}</span>`;
-        printToDom('cartCounter', domString);
+    if (cartCounter.length !== -1) {
+        console.log('item getting through');
+        domString += `<span id="lblCartCount" class="badge badge-light">${cartCounter.length}</span>`;
+        printToDom('cartCounter2', domString);
     } else {
         return;
     }
@@ -372,44 +378,13 @@ const changeImg = () => {
             console.log(image);
             printToDom('carouselLoop', imgString);
         }, time * i);
-        
         });
     };
 };
 
-// Old for loop BUT works
-// const changeImg = () => {
-//     let domString = ''; 
-//     for (let i = 0; i < imagesArray.length; i++) {
-//         setTimeout(() => {
-//             domString = `<img class="myCarousel" src=${imagesArray[i]}>`;
-//             console.log(imagesArray[i]);
-//             printToDom('carouselLoop', domString);
-//         }, time * i);
-//     };
-// };
-
-
-// THIS do/while also works
-// const changeImg = () => {
-//     let domString = '';
-//     let i = 0;
-//     do {
-//         (function (i) {
-//             setTimeout(function () {
-//               domString = `<img class="myCarousel" src=${imagesArray[i]}>`;
-//               console.log(imagesArray[i]);
-//               printToDom('carouselLoop', domString);
-//             }, 1000 * i);
-//           })(i);
-//           i++;     
-//     } 
-//     while (i < imagesArray.length);
-//         // setInterval('changeImg()', time);
-// };
-
 
 // ~~~~~~~~~~~~~~~~~~~~ BEER CART ~~~~~~~~~~~~~~~~~~~~
+
 
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~ INDEX EMAIL SUBSCRIBE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
@@ -431,11 +406,19 @@ const subscribeFunction = (e) => {
 const eventListeners = () => {
     // document.getElementById('scheduleTour').addEventListener('click', scheduleAlert);
     document.getElementById('subscribeBtn').addEventListener('click', subscribeFunction);
+    if (document.getElementById('indexPage') !== null) {
+        window.addEventListener('load', cartIconCounter);
+    }
+};
+
+const clearStorage = () => {
+    localStorage.removeItem('beerCartArray2');
+    window.reload();
+    alert("Enjoy your libations")
 };
 
 
 const init = () =>{
-    // printCart();
     printMap();
     beerCardBuilder(beerArray);
     printContactInfo();
