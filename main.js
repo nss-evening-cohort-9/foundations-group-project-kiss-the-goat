@@ -91,7 +91,7 @@ const printMap = () => {
         return;
     } else {
     let domString = ``;
-    domString += `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3222.393140738528!2d-86.75879268470213!3d36.13263981268999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88646609ffab37eb%3A0x528b2eab4ef5110e!2s500+Interstate+Blvd+S%2C+Nashville%2C+TN+37210!5e0!3m2!1sen!2sus!4v1553963381330!5m2!1sen!2sus" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>`;
+    domString += `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3222.393140738528!2d-86.75879268470213!3d36.13263981268999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88646609ffab37eb%3A0x528b2eab4ef5110e!2s500+Interstate+Blvd+S%2C+Nashville%2C+TN+37210!5e0!3m2!1sen!2sus!4v1553963381330!5m2!1sen!2sus" width="100%" height="400px" frameborder="0" style="border:0" allowfullscreen></iframe>`;
     printToDom('mapContainer', domString);
     };
 };
@@ -145,25 +145,26 @@ const printBrewerPhotos = () => {
         return
     } else {
     let domString = ``;
-    domString += '<div class="row">';
     brewers.forEach((brewer) => {
         let faveBeerString = '';
         brewer.favoriteBeers.forEach((beer) => {
             faveBeerString += `<li>${beer.faveBeerName}, ${beer.faveBeerBrewery}</li>`
         });
-        domString += `<div class="card text-center col-6 brewerCard">`; //CARD
+        domString += `<div class="col-lg-6 col-sm-12 col-md-12"`
+        domString +=  `<div class="card text-center brewerCard">`; //CARD
         domString +=   `<div class="brewerPhotoAndDescriptionWrap">`; //PHOTO AND DESCRIPTION WRAP
         domString +=     `<img class="brewerPhotoWrap" src="${brewer.photo}">`; //BREWER PHOTO
         domString +=     `<div class="brewerDescriptionWrap">`; //DESCRIPTION WRAP
         domString +=       `<h4>${brewer.name}</h4>`;
         domString +=       `<h5>Hometown: ${brewer.hometown}</h5>`;
         domString +=       `<h5>Favorite beers: </h5>`;
-        domString +=       `<ul class="faveBeerList">`;
+        domString +=       `<ul class="faveBeerList list-unstyled text-center">`;
         domString +=            `${faveBeerString}`;
         domString +=       `</ul>`;
         domString +=     `</div>`; //END DESCRIPTION WRAP
         domString +=   `</div>` //END PHOTO AND DESCRIPTION WRAP
         domString +=  `</div>`; //END CARD
+        domString += `</div>`; //END COLUMN
         printToDom('brewerCardContainer', domString);
       });
     }

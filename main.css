@@ -217,13 +217,14 @@ body {
     color: #f44336;
 }
 
-/* Maps */
+/* Maps and Brewer Cards */
 
 #mapAndContactContainer {
     display: flex;
     margin: 15px;
     background-color: #53a7ea;
     border-radius: 5px;
+    justify-content: space-around;
 }
 
 #mapContainer {
@@ -238,7 +239,6 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    width: 85%;
 }
 
 #contactText > h2 {
@@ -253,6 +253,7 @@ body {
 #scheduleTour {
     border-radius: 5px;
     font-size: 1.5em;
+    margin-bottom: 5px;
 }
 
 .brewerContainer {
@@ -260,15 +261,16 @@ body {
     justify-content: space-around;
     flex-wrap: wrap;
     flex-direction: row;
-}
+} 
 
-.borderCardContainer {
+.brewerCardContainer {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
+    margin: 15px;
 }
 
 .brewerCard {
-    padding: 0;
     border-radius: 6px;
     background-color: black;
 }
@@ -288,19 +290,20 @@ body {
 
 #meetTheBrewersTitle {
     font-size: 3em;
-}
+} 
 
 /* relevant styles */
 .brewerPhotoAndDescriptionWrap {
     position: relative;
     display: flex;
-    align-content: center;
+    justify-content: center;
 }
 
 .brewerDescriptionWrap {
     width: 85%;
     align-self: center;
     margin-top: 7px;
+    margin-left: 47px;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -335,6 +338,7 @@ body {
 .brewerPhotoAndDescriptionWrap:hover .brewerDescription {
     transform: translateY(0);
 }
+
 
 /* ============= FOOTER ============== */
 
