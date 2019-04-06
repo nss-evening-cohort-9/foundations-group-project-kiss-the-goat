@@ -21,7 +21,8 @@ body {
     flex-wrap: wrap;
     justify-content: space-around;
     margin: 0 auto;
-    width: 50%;
+    width: 100%;
+    padding: 2.5%;
 }
 .productCard{
     border-radius: 10%;
@@ -31,7 +32,7 @@ body {
     margin-bottom: 5%;
 }
 .productCardBody{
-    border-radius: 0% 0% 10% 10%;
+    border-radius: 0% 0% 5% 5%;
     border: 3px solid white;
     border-top: 5px solid white;
     display: flex;
@@ -41,9 +42,14 @@ body {
 	display: block;
     border: 3px solid white;
     border-bottom: 0px;
-    border-radius: 10% 10% 0% 0%;
-	width: 100%;
-    height: auto;
+    border-radius: 5% 5% 0% 0%;
+    width: auto;
+    height: 500px;
+    object-fit: contain;
+}
+.productCardH{
+    border-bottom: 5px double white;
+    margin-top: auto;
 }
 .seeMore .addToCart{
     background-color: #f44336;
@@ -51,13 +57,17 @@ body {
     margin-bottom: 20px;
     border: 0px;
 }
+.addToCart{
+    margin-top:auto;
+}
 .addToCart:hover, .seeMore:hover{
     background-color: #f4433691;
+    border: 2px solid white;
     text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
     -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
     -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
     box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-    transition: all 1s ease 0s;
+    transition: all .5s ease 0s;
 }
 .addToCart:focus, .seeMore:focus{
     background-color: #53a7ea;
@@ -78,6 +88,7 @@ body {
     border-radius: 50px;
     display: inline-block;
     border: none;
+    width: 100%;
 }
 
 @media screen and (min-width: 40em) {

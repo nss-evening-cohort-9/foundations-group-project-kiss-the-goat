@@ -113,83 +113,83 @@ const printBrewerPhotos = () => {
 //BEER OBJECT LIST 
 const beerArray = [
     {
-        name: 'beer 1',
+        name: 'PERMANENT FUNERAL',
         id: 'beer1',
-        img: 'https://picsum.photos/400/400/?random',
-        abv: '4.8%',
-        description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
+        img: '../imgs/beer1.png',
+        abv: '10.5%',
+        description: 'The wolf inside this pale ale is trying to walk upright. This bright and aromatic beer was brewed with our friends in the band Pig Destroyer.',
         price: 9.99,
-        ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4'],
+        ing: ['Water', 'Hops', 'Yeast', 'Wolf Guts'],
         quantity: 1
     },
     {
-      name: 'beer 2',
+      name: 'ZOMBIE DUST',
       id: 'beer2',
-      img: 'https://picsum.photos/400/400/?random',
-      abv: '12%',
-      description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
+      img: '../imgs/beer2.png',
+      abv: '6.2%',
+      description: 'This intensely hopped and gushing undead Pale Ale will be one’s only respite after the zombie apocalypse. Created with our marvelous friends in the comic industry.',
       price: 15.99,
-      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4'],
+      ing: ['Water', 'Hops', 'Yeast', 'Brains', 'Zombie Guts'],
       quantity: 1
   },
   {
-      name: 'beer 3',
+      name: 'APOCALYPSE COW',
       id: 'beer3',
-      img: 'https://picsum.photos/400/400/?random',
-      abv: '9%',
-      description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
+      img: '../imgs/beer3.png',
+      abv: '8.6%',
+      description: 'This complex double India Pale Ale has an intense citrus and floral hop aroma balanced by a velvety malt body augmented with lactose milk sugar. With this different take on an IPA we have brewed an ale that is both pleasing to drink and once again “not normal."',
       price: 7.99,
-      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4'],
+      ing: ['Water', 'Hops', 'Yeast', 'Flower Stuff', 'Milk'],
       quantity: 1
   },
   {
-      name: 'beer 4',
+      name: 'YUM YUM',
       id: 'beer4',
-      img: 'https://picsum.photos/400/400/?random',
-      abv: '5%',
-      description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
+      img: '../imgs/beer4.png',
+      abv: '5.5%',
+      description: 'Welcome to flavor country. This Pale Ale has just the right malt backbone to support an explosive juicy hop profile. Derived from a new blend of proprietary hops. We hope you’ll enjoy it. Cheers!',
       price: 13.99,
-      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4'],
+      ing: ['Water', 'Hops', 'Yeast', 'Flavor Town'],
       quantity: 1
   },
   {
-      name: 'beer 5',
+      name: 'BEHEMOTH',
       id: 'beer5',
-      img: 'https://picsum.photos/400/400/?random',
-      abv: '10%',
-      description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
+      img: '../imgs/beer5.png',
+      abv: '10.5%',
+      description: 'A huge, sweet Barley Wine with complex caramel malt notes, balanced by generous hopping and a high alcohol content. This fruity and malty beer is best enjoyed while keeping warm in the brutal winter months. January release.',
       price: 16.99,
-      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4'],
+      ing: ['Water', 'Hops', 'Yeast', 'Malts', 'Time'],
       quantity: 1
   },
   {
-      name: 'beer 6',
+      name: 'SPACE STATION MIDDLE FINGER',
       id: 'beer6',
-      img: 'https://picsum.photos/400/400/?random',
-      abv: '7%',
-      description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
+      img: '../imgs/beer6.png',
+      abv: '6%',
+      description: 'From the dawn of time, humans have looked to the sky for answers. Space Station Middle Finger replies to all from its eternal orbit. Behold and enjoy Space Station Middle Finger, a bright golden American Pale Ale.',
       price: 24.99,
-      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4'],
+      ing: ['Water', 'Hops', 'Yeast', 'Aliens'],
       quantity: 1
   },
   {
-      name: 'beer 7',
+      name: 'GUMBALLHEAD',
       id: 'beer7',
-      img: 'https://picsum.photos/400/400/?random',
-      abv: '18%',
-      description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
+      img: '../imgs/beer7.png',
+      abv: '5.6%',
+      description: 'An American wheat ale brewed with white wheat and dry hopped with hand-selected hops from the Yakima Valley. Bright and refreshing with a lemony finish.',
       price: 29.99,
-      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4'],
+      ing: ['Water', 'Hops', 'Yeast', 'Wheat', 'Lemons', 'Gum From Under The Table At IHOP'],
       quantity: 1
   },
   {
-      name: 'beer 8',
+      name: 'DARK LORD',
       id: 'beer8',
-      img: 'https://picsum.photos/400/400/?random',
-      abv: '10%',
-      description: 'lorem ipsum ipsum lorem lorem lorem ipsum',
+      img: '../imgs/beer8.png',
+      abv: '15%',
+      description: 'A demonic Russian-Style Imperial Stout brewed with coffee, Mexican vanilla and Indian sugar, this beer defies description.',
       price: 12.99,
-      ing: ['ingredient 1', 'ingredient 2', 'ingredient 3', 'ingredient 4'],
+      ing: ['Water', 'Hops', 'Yeast', 'Coffee', 'Mexican Vanilla', 'Indian Sugar', 'Souls Of The Innocent'],
       quantity: 1
   }
 ];
@@ -206,14 +206,15 @@ const beerCardBuilder = (arrayToPrint) => {//~~~~~~~~~~~~~~~~~~~~~~~~~~~~CARD BU
         let ingList = '';
     arrayToPrint.forEach((beer) =>{
         for(let i=0; i<beer.ing.length; i++){
-            ingList += ` ${beer.ing[i]} / `;
+            ingList += ` / ${beer.ing[i]} / `;
         };
         stringToPrint += 
         `<div class="card productCard">
             <img class="card-img-top" src="${beer.img}" alt="Card image cap">
             <div class="card-body productCardBody">
-                <h5 class="card-title">${beer.name}</h5>
-                <p class="card-text">${beer.description}</p>
+                <h1 class="card-title productCardH">${beer.name}</h1>
+                <p class="card-text productCardP">${beer.description}</p>
+                <a href="./checkoutPage.html" class="linkCo link${beer.id}" id="link${beer.id}">Checkout Here!</a>
                 <button class="btn addToCart productBtn" type="button" id="add${beer.id}">
                     Add To Cart
                 </button>
@@ -221,11 +222,10 @@ const beerCardBuilder = (arrayToPrint) => {//~~~~~~~~~~~~~~~~~~~~~~~~~~~~CARD BU
                 <button class="btn seeMore productBtn" type="button" data-toggle="collapse" data-target="#seeMore${beer.id}">
                     See More
                 </button>
-                <a href="./checkoutPage.html" class="linkCo link${beer.id}" id="link${beer.id}">Checkout Here!</a>
                 <div class="collapse" id="seeMore${beer.id}">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">ABV: ${beer.abv}</li>
                         <li class="list-group-item">Price: $${beer.price}</li>
+                        <li class="list-group-item">ABV: ${beer.abv}</li>
                             <br>
                         <p>Ingredients:</p>
                         <p class="ingList">${ingList}</p>
