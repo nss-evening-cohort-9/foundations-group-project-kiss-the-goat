@@ -520,12 +520,6 @@ const eventListeners = () => {
     };
 };
 
-const clearStorage = () => {
-    localStorage.removeItem('beerCartArray2');
-    window.reload();
-    alert("Enjoy your libations")
-};
-
 
 const init = () =>{
     printMap();
