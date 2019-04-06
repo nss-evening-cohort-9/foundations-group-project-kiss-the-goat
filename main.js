@@ -12,28 +12,80 @@ const printToDom = (divId, textToPrint) => {
 //Brewer list
 const brewers = [
     {
-        name: 'Emily DeWitt',
-        photo: `http://www.ieeeaustsb.org/files/2017/05/placeholder-male-square.png`,
+        name: 'Tony Andrews',
+        photo: `../imgs/brewer1.jpg`,
         hometown: `Hartwell, Georgia`,
-        favoriteBeers: ['Wiseacre Tiny Bomb', 'Red Stripe', 'Tecate'],
-    },
+        favoriteBeers: [
+            {
+                faveBeerName: 'Duck Duck Gooze',
+                faveBeerBrewery: 'The Lost Abbey'
+            },
+            {
+                faveBeerName: 'Orval Trappist Ale',
+                faveBeerBrewery: `Brasserie d'Orval`
+            },
+            {
+                faveBeerName: 'Headroom',
+                faveBeerBrewery: 'Trillium' 
+            },
+        ]
+        },
     {
-        name: 'Josh Pantana',
-        photo: `http://www.ieeeaustsb.org/files/2017/05/placeholder-male-square.png`,
+        name: 'Sara Smith',
+        photo: `../imgs/brewer2.jpg`,
         hometown: `Atlanta, Georgia`,
-        favoriteBeers: ['Miller Lite', 'Old Speckled Hen', 'Dos Equis'],
+        favoriteBeers: [
+            {
+                faveBeerName: 'Darkness',
+                faveBeerBrewery: 'Surly Brewing Company'
+            },
+            {
+                faveBeerName: 'The Abyss',
+                faveBeerBrewery: 'Deschutes Brewing Company'
+            },
+            {
+                faveBeerName: 'Double Barrel Jesus',
+                faveBeerBrewery: 'Evin Twin Brewing'
+            },
+        ]
     },
     {
-        name: 'Keith Walker',
-        photo: `http://www.ieeeaustsb.org/files/2017/05/placeholder-male-square.png`,
+        name: 'Amy Johnson',
+        photo: `../imgs/brewer3.jpg`,
         hometown: `Chicago, Illinois`,
-        favoriteBeers: ['Fullers ESB', 'Budweiser', 'Newcastle Brown Ale'],
+        favoriteBeers: [
+            {
+                faveBeerName: 'Bourbon Paradise Ale',
+                faveBeerBrewery: 'Prairie Artisan Ales'
+            },
+            {
+                faveBeerName: 'Chocolate Cupcake Stout',
+                faveBeerBrewery: 'Angry Chair Brewing'
+            },
+            {
+                faveBeerName: 'Atrial Rubicite',
+                faveBeerBrewery: 'Jester King'
+            },
+        ]
     },
     {
-        name: 'Austin Casey',
-        photo: `http://www.ieeeaustsb.org/files/2017/05/placeholder-male-square.png`,
+        name: 'Andrew Ayers',
+        photo: `../imgs/brewer4.jpg`,
         hometown: `Nashville, Tennessee`,
-        favoriteBeers: ['Chicken Scratch', 'Peanut Butter Milk Stout', 'Jackalope'],
+        favoriteBeers: [
+            {
+                faveBeerName: 'Omnipollo Yellow Belly',
+                faveBeerBrewery: 'Buxton Brewery'
+            },
+            {
+                faveBeerName: 'Fuzzy',
+                faveBeerBrewery: 'Side Project'
+            },
+            {
+                faveBeerName: 'Imperium Prunum',
+                faveBeerBrewery: 'Browar Kormoran'
+            },
+        ]
     },
 ];
 
@@ -44,7 +96,7 @@ const printMap = () => {
         return;
     } else {
     let domString = ``;
-    domString += `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3222.393140738528!2d-86.75879268470213!3d36.13263981268999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88646609ffab37eb%3A0x528b2eab4ef5110e!2s500+Interstate+Blvd+S%2C+Nashville%2C+TN+37210!5e0!3m2!1sen!2sus!4v1553963381330!5m2!1sen!2sus" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>`;
+    domString += `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3222.393140738528!2d-86.75879268470213!3d36.13263981268999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88646609ffab37eb%3A0x528b2eab4ef5110e!2s500+Interstate+Blvd+S%2C+Nashville%2C+TN+37210!5e0!3m2!1sen!2sus!4v1553963381330!5m2!1sen!2sus" width="100%" height="400px" frameborder="0" style="border:0" allowfullscreen></iframe>`;
     printToDom('mapContainer', domString);
     };
 };
@@ -98,18 +150,26 @@ const printBrewerPhotos = () => {
         return
     } else {
     let domString = ``;
-    domString += '<div class="row">';
     brewers.forEach((brewer) => {
-        domString += `<div class="card text-center col-6 brewerCard">`; //CARD
+        let faveBeerString = '';
+        brewer.favoriteBeers.forEach((beer) => {
+            faveBeerString += `<li>${beer.faveBeerName}, ${beer.faveBeerBrewery}</li>`
+        });
+        domString += `<div class="col-lg-6 col-sm-12 col-md-12"`
+        domString +=  `<div class="card text-center brewerCard">`; //CARD
         domString +=   `<div class="brewerPhotoAndDescriptionWrap">`; //PHOTO AND DESCRIPTION WRAP
         domString +=     `<img class="brewerPhotoWrap" src="${brewer.photo}">`; //BREWER PHOTO
         domString +=     `<div class="brewerDescriptionWrap">`; //DESCRIPTION WRAP
         domString +=       `<h4>${brewer.name}</h4>`;
         domString +=       `<h5>Hometown: ${brewer.hometown}</h5>`;
-        domString +=       `<h5>Favorite beers: ${brewer.favoriteBeers}</h5>`;
+        domString +=       `<h5>Favorite beers: </h5>`;
+        domString +=       `<ul class="faveBeerList list-unstyled text-center">`;
+        domString +=            `${faveBeerString}`;
+        domString +=       `</ul>`;
         domString +=     `</div>`; //END DESCRIPTION WRAP
         domString +=   `</div>` //END PHOTO AND DESCRIPTION WRAP
         domString +=  `</div>`; //END CARD
+        domString += `</div>`; //END COLUMN
         printToDom('brewerCardContainer', domString);
       });
     }
@@ -448,11 +508,16 @@ const clearStorage = () => {
 };
 
 const eventListeners = () => {
-    // document.getElementById('scheduleTour').addEventListener('click', scheduleAlert);
+    const scheduleTour = document.getElementById('scheduleTour');
+    if (scheduleTour === null) {
+        return;
+    } else {
+    scheduleTour.addEventListener('click', scheduleAlert);
+    };
     document.getElementById('subscribeBtn').addEventListener('click', subscribeFunction);
     if (document.getElementById('indexPage') !== null) {
         window.addEventListener('load', cartIconCounter);
-    }
+    };
 };
 
 const clearStorage = () => {
