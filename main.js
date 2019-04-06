@@ -273,9 +273,9 @@ const addToCartListeners = () => {//~~~~~~~~~~~ADD TO CART LISTENERS~~~~~~~~~~~~
     }
 };
 
-<<<<<<< HEAD
-/*let shoppingCartArray = [
-=======
+
+
+
 let cartCounter = [];
 
 const cartIconCounter = () => {
@@ -292,11 +292,7 @@ const cartIconCounter = () => {
     }
 };
 
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
-
-
-let shoppingCartArray = [
->>>>>>> master
+/*let shoppingCartArray = [
     {
         name: 'Beer-1-name',
         imgUrl: 'https://via.placeholder.com/148',
