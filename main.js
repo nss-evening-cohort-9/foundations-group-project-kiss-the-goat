@@ -1,3 +1,8 @@
+const subscribeIndexEmail = [];
+const imagesArray = ['./imgs/carousel1.jpg', './imgs/carousel2.jpg', './imgs/carousel3.jpg', './imgs/carousel4.jpg', './imgs/carousel6.jpg', './imgs/carousel7.jpg', './imgs/carousel8.jpg', './imgs/carousel9.jpg', './imgs/carousel10.jpg'];
+let time = 5000;
+
+
 //printToDom function
 const printToDom = (divId, textToPrint) => {
     const selectedDiv = document.getElementById(divId);
@@ -299,6 +304,7 @@ const beerCardBuilder = (arrayToPrint) => {//~~~~~~~~~~~~~~~~~~~~~~~~~~~~CARD BU
     addToCartListeners();
 }};
 
+
 const addToCart = (e) =>{//~~~~~~~~~~~~~~~~~~~~ADD TO CART ARRAY PUSH~~~~~~~~~~~~~~//
     const id = e.target.id;
     let idTxt = e.target;
@@ -312,7 +318,12 @@ const addToCart = (e) =>{//~~~~~~~~~~~~~~~~~~~~ADD TO CART ARRAY PUSH~~~~~~~~~~~
             aId.style.visibility='visible';
         };
     };
+    // JP DO NOT DELETE
+    localStorage.setItem('beerCartArray2', JSON.stringify(beerCartArray));
+    console.log(JSON.parse(localStorage.getItem("beerCartArray2")));
+    cartIconCounter(); // JP line for cart counter
 };
+
 
 const addToCartListeners = () => {//~~~~~~~~~~~ADD TO CART LISTENERS~~~~~~~~~~~~~//
     for(i=0; i<beerArray.length; i++){
@@ -320,6 +331,25 @@ const addToCartListeners = () => {//~~~~~~~~~~~ADD TO CART LISTENERS~~~~~~~~~~~~
         btnId.addEventListener('click', addToCart);
     }
 };
+
+let cartCounter = [];
+
+const cartIconCounter = () => {
+    console.log('          cart icon counter running');
+    let cartCounter = JSON.parse(localStorage.getItem("beerCartArray2"))
+
+    let domString = '';
+    if (cartCounter.length !== -1) {
+        console.log('item getting through');
+        domString += `<span id="lblCartCount" class="badge badge-light">${cartCounter.length}</span>`;
+        printToDom('cartCounter2', domString);
+    } else {
+        return;
+    }
+};
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
 
 let shoppingCartArray = [
     {
@@ -393,6 +423,7 @@ const printCart = () =>{
 };
     
 
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~ INDEX EMAIL SUBSCRIBE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 const subscribeEmail = [];
 
@@ -404,15 +435,14 @@ const newSubscriber = () => {
     subscribeEmail.push(newDrinker);
 };
 
-
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~ IMAGE CAROUSEL INDEX.HTML ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
-const imagesArray = ['./imgs/1.jpg', './imgs/2.jpg', './imgs/3.jpg', './imgs/4.jpg', './imgs/6.jpg', './imgs/6.jpg', './imgs/7.jpg', './imgs/8.jpg', './imgs/9.jpg', './imgs/10.jpg'];
-let time = 3500;
-
-
-
 const changeImg = () => {
+    let indexPage = document.getElementById('indexPage');
+    if(indexPage === null){//page conditional
+        return;
+    }
+    else {
     let imgString = ''; 
     imagesArray.forEach((image, i) => {
         setTimeout(() => {
@@ -420,21 +450,52 @@ const changeImg = () => {
             console.log(image);
             printToDom('carouselLoop', imgString);
         }, time * i);
+        });
+    };
+};
+
+
+// ~~~~~~~~~~~~~~~~~~~~ BEER CART ~~~~~~~~~~~~~~~~~~~~
+
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~ INDEX EMAIL SUBSCRIBE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+const subscribeFunction = (e) => {
+    let indexPage = document.getElementById('indexPage');
+    if(indexPage === null){//page conditional
         return;
-    });
+    }
+    else {
+    e.preventDefault();
+    let newDrinker = {
+        fullName: document.getElementById('fullnameSubscribe').value,
+        email: document.getElementById('exampleInputEmail1').value,
+        }
+    subscribeIndexEmail.push(newDrinker);
+    }
 };
 
 const eventListeners = () => {
     const scheduleTour = document.getElementById('scheduleTour');
-    if(scheduleTour===null){
+    if (scheduleTour === null) {
         return;
-    } else{
+    } else {
     scheduleTour.addEventListener('click', scheduleAlert);
+    };
+    document.getElementById('subscribeBtn').addEventListener('click', subscribeFunction);
+    if (document.getElementById('indexPage') !== null) {
+        window.addEventListener('load', cartIconCounter);
     };
 };
 
+const clearStorage = () => {
+    localStorage.removeItem('beerCartArray2');
+    window.reload();
+    alert("Enjoy your libations")
+};
+
+
 const init = () =>{
-    printCart();
     printMap();
     beerCardBuilder(beerArray);
     printContactInfo();
