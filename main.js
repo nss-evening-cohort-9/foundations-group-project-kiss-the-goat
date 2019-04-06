@@ -291,16 +291,17 @@ const addToCartListeners = () => {//~~~~~~~~~~~ADD TO CART LISTENERS~~~~~~~~~~~~
     }
 ];*/
 
-const beerInCart = JSON.parse(localStorage.getItem('shoppingCartArray'));
+let beerInCart = JSON.parse(localStorage.getItem('shoppingCartArray'));
 
 
 const printCart = () =>{
+    let beerTotal = 0;
+    
     const checkoutPage = document.getElementById('checkout-card-container');
     if(checkoutPage===null){
         return;
     } else{
     let domString = '';
-    let i = 0
     beerInCart.forEach((beer)=> {
         
         if(beer.quantity >= 1){
@@ -321,11 +322,14 @@ const printCart = () =>{
             domString += `      </form>`;
             domString += `  </div>`;
             domString += `</div>`;
+            beerTotal += (Math.round((beer.price * beer.quantity)*100)/100);
         };
-        i++
     });
+    document.getElementById('cart-total').innerHTML = 'Total: $' + beerTotal;
     printToDom('checkout-card-container', domString);
     addChangeEvents();
+    console.log(beerTotal);
+    document.getElementById('checkout-btn').addEventListener('click', clearStorage);
 };
 };
 
@@ -391,6 +395,12 @@ const changeImg = () => {
         }, time * i);
         return;
     });
+};
+
+const clearStorage = () => {
+    localStorage.removeItem('beerCartArray2');
+    document.getElementById('checkout-card-container').innerHTML = "<image class='img d-flex flex-wrap w-25 h-25' src='https://i.imgur.com/JIFtb2n.jpg'>";
+    alert('Enjoy your hooch :)');
 };
 
 const eventListeners = () => {
