@@ -425,7 +425,12 @@ const changeImg = () => {
 };
 
 const eventListeners = () => {
-    document.getElementById('scheduleTour').addEventListener('click', scheduleAlert);
+    const scheduleTour = document.getElementById('scheduleTour');
+    if(scheduleTour===null){
+        return;
+    } else{
+    scheduleTour.addEventListener('click', scheduleAlert);
+    };
 };
 
 const init = () =>{
