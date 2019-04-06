@@ -320,7 +320,7 @@ const addToCart = (e) =>{//~~~~~~~~~~~~~~~~~~~~ADD TO CART ARRAY PUSH~~~~~~~~~~~
         };
     };
     // JP DO NOT DELETE
-    localStorage.setItem('beerCartArray2', JSON.stringify(beerCartArray));
+    localStorage.setItem('beerCartArray2', JSON.stringify(shoppingCartArray));
     console.log(JSON.parse(localStorage.getItem("beerCartArray2")));
     cartIconCounter(); // JP line for cart counter
 };
@@ -339,6 +339,9 @@ const addToCartListeners = () => {//~~~~~~~~~~~ADD TO CART LISTENERS~~~~~~~~~~~~
 let cartCounter = [];
 
 const cartIconCounter = () => {
+    if (document.getElementById('indexPage') === null) {
+        return;
+    } else {
     console.log('          cart icon counter running');
     let cartCounter = JSON.parse(localStorage.getItem("beerCartArray2"))
 
@@ -349,6 +352,7 @@ const cartIconCounter = () => {
         printToDom('cartCounter2', domString);
     } else {
         return;
+    }
     }
 };
 
@@ -386,7 +390,7 @@ const cartIconCounter = () => {
     }
 ];*/
 
-let beerInCart = JSON.parse(localStorage.getItem('shoppingCartArray'));
+const beerInCart = JSON.parse(localStorage.getItem('shoppingCartArray'));
 
 
 const printCart = () =>{
@@ -502,9 +506,9 @@ const subscribeFunction = (e) => {
 };
 
 const clearStorage = () => {
-    localStorage.removeItem('beerCartArray2');
-    document.getElementById('checkout-card-container').innerHTML = "<image class='img d-flex flex-wrap w-25 h-25' src='https://i.imgur.com/JIFtb2n.jpg'>";
-    alert('Enjoy your hooch :)');
+   localStorage.removeItem('beerCartArray2');
+   document.getElementById('checkout-card-container').innerHTML = "<image class='img d-flex flex-wrap w-25 h-25' src='https://i.imgur.com/JIFtb2n.jpg'>";
+   alert('Enjoy your hooch :)');
 };
 
 const eventListeners = () => {
@@ -523,6 +527,7 @@ const eventListeners = () => {
 
 const init = () =>{
     printMap();
+    printCart();
     beerCardBuilder(beerArray);
     printContactInfo();
     printBrewerTitle();
