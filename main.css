@@ -17,34 +17,90 @@ body {
 
 /* ~~~~~~~~~~~~~    PRODUCT PAGE     ~~~~~~~~~~~~~~*/
 .productCon {
-
     display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
     margin: 0 auto;
+    width: 100%;
+    padding: 2.5%;
 }
 .productCard{
-    margin: 2.5%;
+    border-radius: 10%;
+    background-color: black;
     text-align: center;
-    width: 24%;
+    color: white;
+    margin-bottom: 5%;
+}
+.productCardBody{
+    border-radius: 0% 0% 5% 5%;
+    border: 3px solid white;
+    border-top: 5px solid white;
+    display: flex;
+    flex-flow: column wrap;
 }
 .productCard img{
-    width: 200px;
-    height: 200px;
-    margin: 0 auto;
+	display: block;
+    border: 3px solid white;
+    border-bottom: 0px;
+    border-radius: 5% 5% 0% 0%;
+    width: auto;
+    height: 500px;
+    object-fit: contain;
 }
-.seeMore, .addToCart{
+.productCardH{
+    border-bottom: 5px double white;
+    margin-top: auto;
+}
+.seeMore .addToCart{
     background-color: #f44336;
+    margin: 0 auto;
     margin-bottom: 20px;
+    border: 0px;
+}
+.addToCart{
+    margin-top:auto;
 }
 .addToCart:hover, .seeMore:hover{
     background-color: #f4433691;
+    border: 2px solid white;
+    text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    transition: all .5s ease 0s;
 }
-.addToCart:focus{
-    background-color: blue;
+.addToCart:focus, .seeMore:focus{
+    background-color: #53a7ea;
 }
 .linkCo{
     visibility: hidden;
+    color: #53a7ea;
+}
+.list-group-item{
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+}
+.productBtn{
+    color:white;
+    text-transform: uppercase;
+    background: #60a3bc;
+    border-radius: 50px;
+    display: inline-block;
+    border: none;
+    width: 100%;
+}
+
+@media screen and (min-width: 40em) {
+    .productCon {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+ 
+    .productCard {
+        flex: 0 1 calc(25% - 1em);
+    }
 }
 
 /* .seeMore{
