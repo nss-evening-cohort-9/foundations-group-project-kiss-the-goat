@@ -318,6 +318,10 @@ body {
     transition: opacity .2s, visibility .2s;
 }
 
+.faveBeerList {
+    list-style-type: none;
+}
+
 .brewerPhotoAndDescriptionWrap:hover .brewerDescriptionWrap {
     visibility: visible;
     opacity: 1;
