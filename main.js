@@ -322,7 +322,7 @@ const addToCart = (e) =>{//~~~~~~~~~~~~~~~~~~~~ADD TO CART ARRAY PUSH~~~~~~~~~~~
     // JP DO NOT DELETE
     // localStorage.setItem('beerCartArray2', JSON.stringify(shoppingCartArray));
     // console.log(JSON.parse(localStorage.getItem("beerCartArray2")));
-    cartIconCounter(); // JP line for cart counter
+    cartIconCounter();// JP line for cart counter
 };
 
 
@@ -469,12 +469,15 @@ const subscribeFunction = (e) => {
 };
 
 const clearStorage = () => {
-   localStorage.removeItem('beerCartArray2');
+//    localStorage.removeItem('beerCartArray2');
+   let domString = '';
    localStorage.removeItem('shoppingCartArray');
    document.getElementById('checkout-card-container').innerHTML = "<image class='img d-flex flex-wrap w-25 h-25' src='https://i.imgur.com/JIFtb2n.jpg'>";
    alert('Enjoy your hooch :)');
    let beerTotal = 0;
    document.getElementById('cart-total').innerHTML = 'Total: $' + beerTotal;
+//    cartIconCounter();
+   location.reload();
 };
 
 const eleventhHourListener = () => {
@@ -505,6 +508,7 @@ const init = () =>{
     eventListeners();
     eleventhHourListener();
     changeImg();
+    cartIconCounter();
 };
 
 init();
