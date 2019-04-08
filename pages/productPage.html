@@ -10,23 +10,29 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../main.css">
-    <title>Libeery</title>
+    <title>LiBEERy</title>
   </head>
   <body>
 
+      <!-- ~~~~~~~~~~~~~~~ NAV BAR MAIN ~~~~~~~~~~~~~~ -->
       <nav id="topNav" class="navbar navbar-expand-lg d-flex">
-          <a class="navbar-brand" href="../index.html">Kiss The Goat <i class="fas fa-beer"></i></a>
-          <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon "></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div class="navbar-nav ml-auto">
-              <a class="nav-item nav-link active" href="../index.html">Home <span class="sr-only">(current)</span></a>
-              <a class="nav-item nav-link" href="./taproom.html">Taproom</a>
-              <a class="nav-item nav-link" href="./productPage.html">The Li<span class="beerSpan">Beer</span>y</a>
-              <a class="nav-item nav-link" href="./checkoutPage.html">checkout</a>
-              </div>
-          </div>
+
+        <img id="goatIcon" class="align-items-center " src="https://static.thenounproject.com/png/37047-200.png" alt="black and white goat image">
+        <a class="navbar-brand" href="#">Kiss The Goat</i></a>
+
+
+        <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav redBlue ml-auto">
+              <a class="nav1 nav-item nav-link" href="../index.html">Home <span class="sr-only">(current)</span></a>
+              <a class="nav2 nav-item nav-link" href="./taproom.html">Taproom</a>
+              <a class="nav3 nav-item nav-link active" href="./productPage.html">The Li<span class="beerSpan">Beer</span>y</a>
+              <a class="nav4 nav-item nav-link" href="./checkoutPage.html"><i id="cartCounter" class="fas fa-shopping-cart"></i></a>
+            </div>
+        </div>
       </nav>
       
       <div class="productCon" id="productCon"></div>

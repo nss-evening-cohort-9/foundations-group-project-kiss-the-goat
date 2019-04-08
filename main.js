@@ -320,8 +320,8 @@ const addToCart = (e) =>{//~~~~~~~~~~~~~~~~~~~~ADD TO CART ARRAY PUSH~~~~~~~~~~~
         };
     };
     // JP DO NOT DELETE
-    localStorage.setItem('beerCartArray2', JSON.stringify(shoppingCartArray));
-    console.log(JSON.parse(localStorage.getItem("beerCartArray2")));
+    // localStorage.setItem('beerCartArray2', JSON.stringify(shoppingCartArray));
+    // console.log(JSON.parse(localStorage.getItem("beerCartArray2")));
     cartIconCounter(); // JP line for cart counter
 };
 
@@ -339,63 +339,23 @@ const addToCartListeners = () => {//~~~~~~~~~~~ADD TO CART LISTENERS~~~~~~~~~~~~
 let cartCounter = [];
 
 const cartIconCounter = () => {
-    if (document.getElementById('indexPage') === null) {
-        return;
-    } else {
     console.log('          cart icon counter running');
-    let cartCounter = JSON.parse(localStorage.getItem("beerCartArray2"))
-
+    let cartCounter = JSON.parse(localStorage.getItem("shoppingCartArray"))
     let domString = '';
+    console.log(cartCounter.length);
     if (cartCounter.length !== -1) {
-        console.log('item getting through');
         domString += `<span id="lblCartCount" class="badge badge-light">${cartCounter.length}</span>`;
-        printToDom('cartCounter2', domString);
+        printToDom('cartCounter', domString);
+        // console.log(domString, 'cartCounter2');
     } else {
         return;
-    }
     }
 };
 
-/*let shoppingCartArray = [
-    {
-        name: 'Beer-1-name',
-        imgUrl: 'https://via.placeholder.com/148',
-        pricePer: 1.99,
-        quantity: 1,
-
-    },
-    {
-        name: 'Beer-2-name',
-        imgUrl: 'https://via.placeholder.com/148',
-        pricePer: 2.99,
-        quantity: 2,
-    },
-    {
-        name: 'Beer-3-name',
-        imgUrl: 'https://via.placeholder.com/148',
-        pricePer: 3.99,
-        quantity: 3,
-    },
-    {
-        name: 'Beer-4-name',
-        imgUrl: 'https://via.placeholder.com/148',
-        pricePer: 4.99,
-        quantity: 4,
-    },
-    {
-        name: 'Beer-5-name',
-        imgUrl: 'https://via.placeholder.com/148',
-        pricePer: 5.99,
-        quantity: 5,
-    }
-];*/
-
 const beerInCart = JSON.parse(localStorage.getItem('shoppingCartArray'));
-
 
 const printCart = () =>{
     let beerTotal = 0;
-    
     const checkoutPage = document.getElementById('checkout-card-container');
     if(checkoutPage===null){
         return;
@@ -421,7 +381,7 @@ const printCart = () =>{
             domString += `      </form>`;
             domString += `  </div>`;
             domString += `</div>`;
-            beerTotal += (Math.round((beer.price * beer.quantity)*100)/100);
+            beerTotal += (Math.round((beer.price * beer.quantity)*100).toFixed(2)/100);
         };
     });
     document.getElementById('cart-total').innerHTML = 'Total: $' + beerTotal;
@@ -493,35 +453,45 @@ const changeImg = () => {
 const subscribeFunction = (e) => {
     let indexPage = document.getElementById('indexPage');
     if(indexPage === null){//page conditional
+        console.log('subscribe not woring right');
         return;
-    }
-    else {
+    } else {
     e.preventDefault();
+    console.log(e);
     let newDrinker = {
         fullName: document.getElementById('fullnameSubscribe').value,
         email: document.getElementById('exampleInputEmail1').value,
         }
     subscribeIndexEmail.push(newDrinker);
+    console.log(subscribeIndexEmail);
+    console.log(newDrinker);
     }
 };
 
 const clearStorage = () => {
    localStorage.removeItem('beerCartArray2');
+   localStorage.removeItem('shoppingCartArray');
    document.getElementById('checkout-card-container').innerHTML = "<image class='img d-flex flex-wrap w-25 h-25' src='https://i.imgur.com/JIFtb2n.jpg'>";
    alert('Enjoy your hooch :)');
+   let beerTotal = 0;
+   document.getElementById('cart-total').innerHTML = 'Total: $' + beerTotal;
 };
+
+const eleventhHourListener = () => {
+    if (document.getElementById('indexPage') !== null) {
+        document.getElementById('subscribeBtn').addEventListener('click', subscribeFunction);
+        window.addEventListener('load', cartIconCounter);
+    }
+};
+
 
 const eventListeners = () => {
     const scheduleTour = document.getElementById('scheduleTour');
     if (scheduleTour === null) {
         return;
     } else {
-    scheduleTour.addEventListener('click', scheduleAlert);
-    };
-    document.getElementById('subscribeBtn').addEventListener('click', subscribeFunction);
-    if (document.getElementById('indexPage') !== null) {
-        window.addEventListener('load', cartIconCounter);
-    };
+        scheduleTour.addEventListener('click', scheduleAlert);
+    };  
 };
 
 
@@ -533,6 +503,7 @@ const init = () =>{
     printBrewerTitle();
     printBrewerPhotos();
     eventListeners();
+    eleventhHourListener();
     changeImg();
 };
 

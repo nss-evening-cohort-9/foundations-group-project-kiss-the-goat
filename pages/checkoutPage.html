@@ -12,25 +12,35 @@
 </head>
 
 <body id='checkoutPage'>
-        <nav id="topNav" class="navbar navbar-expand-lg d-flex">
-            <a class="navbar-brand" href="../index.html">Kiss The Goat <i class="fas fa-beer"></i></a>
-            <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon "></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav ml-auto">
-                <a class="nav-item nav-link active" href="../index.html">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="./taproom.html">Taproom</a>
-                <a class="nav-item nav-link" href="./productPage.html">The Li<span class="beerSpan">Beer</span>y</a>
-                <a class="nav-item nav-link" href="./checkoutPage.html">checkout</a>
-                </div>
+    <!-- ~~~~~~~~~~~~~~~ NAV BAR MAIN ~~~~~~~~~~~~~~ -->
+    <nav id="topNav" class="navbar navbar-expand-lg d-flex">
+        <img id="goatIcon" class="align-items-center " src="https://static.thenounproject.com/png/37047-200.png" alt="black and white goat image">
+        <a class="navbar-brand" href="#">Kiss The Goat</i></a>
+        <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav redBlue ml-auto">
+                <a class="nav1 nav-item nav-link" href="../index.html">Home <span class="sr-only">(current)</span></a>
+                <a class="nav2 nav-item nav-link" href="./taproom.html">Taproom</a>
+                <a class="nav3 nav-item nav-link" href="./productPage.html">The Li<span class="beerSpan">Beer</span>y</a>
+                <a class="nav4 nav-item nav-link active" href="./checkoutPage.html"><i id="cartCounter" class="fas fa-shopping-cart"></i></a>
             </div>
-        </nav>
-        <image href='https://i.imgur.com/JIFtb2n.jpg'id='YES'>
+        </div>
+    </nav>
+
+    <div class="container makeSpace">
+        <!-- <image href='https://i.imgur.com/JIFtb2n.jpg'id='YES'> -->
         <h2 style='align-self: auto; color: maroon;'>Your Cart</h2>
-        <div class='row' id='checkout-card-container'> </div>
+        <div class='row flex-wrap' id='checkout-card-container'> </div>
         <h3 id='cart-total' style='align-self: auto; color: maroon;'></h3>
         <button id='checkout-btn' class='btn btn-primary'>Checkout</button>
+    </div>
+
+<footer>
+    <p class="footer">&copy; 2019 All Rights Reserved. Kiss The Goat ~ <a class="link" type="email" href="mailto:kiss.the.goat@gmail.com" subject="inquiring about the beer">Contact Us</a>
+    </p>
+</footer>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
