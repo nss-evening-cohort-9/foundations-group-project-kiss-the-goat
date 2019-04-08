@@ -1,11 +1,7 @@
 # Kiss The Goat
 
-# Sorting Hat
-
 ## Description
 Beer Company Group Project - first milestone. This is a multi page site that implements bootstrap grid design, and pure javascript functionality.
-
-![Image of the website upon loading.]("The sorting hat")
 
 ## Features
 * index.html homepage that allows the user to read basic brewery information, subscribe to a newsletter, and read about upcoming events and happenings
@@ -39,10 +35,10 @@ $ npm install -g http-server
 
 ### Screenshots:
 
-![Image of the website input field.]( "screenshot of input field for sorting.")
+![Image of the website input field.](https://raw.githubusercontent.com/nss-evening-cohort-9/foundations-group-project-kiss-the-goat/master/screenshots/1.png "screenshot of input field for sorting.")
 
-![Image of website cards.]( "screenshot of hogwarts cards and death eater cards")
+![Image of website cards.](https://raw.githubusercontent.com/nss-evening-cohort-9/foundations-group-project-kiss-the-goat/master/screenshots/2.png "screenshot of hogwarts cards and death eater cards")
 
+![Image of website cards.](https://raw.githubusercontent.com/nss-evening-cohort-9/foundations-group-project-kiss-the-goat/master/screenshots/3.png "screenshot of hogwarts cards and death eater cards")
 
-
-
+![Image of website cards.](https://raw.githubusercontent.com/nss-evening-cohort-9/foundations-group-project-kiss-the-goat/master/screenshots/4.png "screenshot of hogwarts cards and death eater cards")
