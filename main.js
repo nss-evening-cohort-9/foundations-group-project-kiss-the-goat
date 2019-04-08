@@ -2,7 +2,6 @@ const subscribeIndexEmail = [];
 const imagesArray = ['./imgs/carousel1.jpg', './imgs/carousel2.jpg', './imgs/carousel3.jpg', './imgs/carousel4.jpg', './imgs/carousel6.jpg', './imgs/carousel7.jpg', './imgs/carousel8.jpg', './imgs/carousel9.jpg', './imgs/carousel10.jpg'];
 let time = 5000;
 
-
 //printToDom function
 const printToDom = (divId, textToPrint) => {
     const selectedDiv = document.getElementById(divId);
@@ -260,7 +259,6 @@ const beerArray = [
 ];
 const shoppingCartArray = [];
 
-
 const beerCardBuilder = (arrayToPrint) => {//~~~~~~~~~~~~~~~~~~~~~~~~~~~~CARD BUILDER FUNCTION~~~~//
     const productPage = document.getElementById('productCon');
     if(productPage === null) {//page conditional
@@ -304,7 +302,6 @@ const beerCardBuilder = (arrayToPrint) => {//~~~~~~~~~~~~~~~~~~~~~~~~~~~~CARD BU
     addToCartListeners();
 }};
 
-
 const addToCart = (e) =>{//~~~~~~~~~~~~~~~~~~~~ADD TO CART ARRAY PUSH~~~~~~~~~~~~~~//
     const id = e.target.id;
     let idTxt = e.target;
@@ -319,12 +316,8 @@ const addToCart = (e) =>{//~~~~~~~~~~~~~~~~~~~~ADD TO CART ARRAY PUSH~~~~~~~~~~~
             localStorage.setItem('shoppingCartArray', JSON.stringify(shoppingCartArray));
         };
     };
-    // JP DO NOT DELETE
-    // localStorage.setItem('beerCartArray2', JSON.stringify(shoppingCartArray));
-    // console.log(JSON.parse(localStorage.getItem("beerCartArray2")));
     cartIconCounter();// JP line for cart counter
 };
-
 
 const addToCartListeners = () => {//~~~~~~~~~~~ADD TO CART LISTENERS~~~~~~~~~~~~~//
     for(i=0; i<beerArray.length; i++){
@@ -332,9 +325,6 @@ const addToCartListeners = () => {//~~~~~~~~~~~ADD TO CART LISTENERS~~~~~~~~~~~~
         btnId.addEventListener('click', addToCart);
     }
 };
-
-
-
 
 let cartCounter = [];
 
@@ -409,10 +399,8 @@ const addChangeEvents = () =>{
     });
     printCart();
     addChangeEvents();
+    cartIconCounter();
 };
-
-    
-
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~ INDEX EMAIL SUBSCRIBE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 const subscribeEmail = [];
@@ -426,7 +414,6 @@ const newSubscriber = () => {
 };
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~ IMAGE CAROUSEL INDEX.HTML ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
-
 const changeImg = () => {
     let indexPage = document.getElementById('indexPage');
     if(indexPage === null){//page conditional
@@ -442,10 +429,11 @@ const changeImg = () => {
         }, time * i);
         });
     };
+    reloadIndex();
 };
-
-// ~~~~~~~~~~~~~~~~~~~~ BEER CART ~~~~~~~~~~~~~~~~~~~~
-
+const reloadIndex = () => {
+    setInterval(function() { window.location.reload() }, 60000);
+};
 
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~ INDEX EMAIL SUBSCRIBE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
@@ -475,7 +463,6 @@ const clearStorage = () => {
    alert('Enjoy your hooch :)');
    let beerTotal = 0;
    document.getElementById('cart-total').innerHTML = 'Total: $' + beerTotal;
-//    cartIconCounter();
    location.reload();
 };
 
@@ -486,7 +473,6 @@ const eleventhHourListener = () => {
     }
 };
 
-
 const eventListeners = () => {
     const scheduleTour = document.getElementById('scheduleTour');
     if (scheduleTour === null) {
@@ -495,7 +481,6 @@ const eventListeners = () => {
         scheduleTour.addEventListener('click', scheduleAlert);
     };  
 };
-
 
 const init = () =>{
     printMap();
